@@ -1,0 +1,585 @@
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<!-- Do not modify this file directly.  Instead, copy entries that you -->
+<!-- wish to modify from this file into yarn-site.xml and change them -->
+<!-- there.  If yarn-site.xml does not already exist, create it.      -->
+<configuration> 
+   <!-- IPC Configs -->  
+   <property> 
+      <description>Factory to create client IPC classes.</description>  
+      <name>yarn.ipc.client.factory.class</name>  
+      <source>yarn-site.xml</source>  
+      <defaultValue/>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Type of serialization to use.</description>  
+      <name>yarn.ipc.serializer.type</name>  
+      <defaultValue>protocolbuffers</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Factory to create server IPC classes.</description>  
+      <name>yarn.ipc.server.factory.class</name>  
+      <source>yarn-site.xml</source>  
+      <defaultValue/>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Factory to create IPC exceptions.</description>  
+      <name>yarn.ipc.exception.factory.class</name>  
+      <source>yarn-site.xml</source>  
+      <defaultValue/>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Factory to create serializeable records.</description>  
+      <name>yarn.ipc.record.factory.class</name>  
+      <source>yarn-site.xml</source>  
+      <defaultValue/>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>RPC class implementation</description>  
+      <name>yarn.ipc.rpc.class</name>  
+      <defaultValue>org.apache.hadoop.yarn.ipc.HadoopYarnProtoRPC</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!-- Resource Manager Configs -->  
+   <property> 
+      <description>The address of the applications manager interface in the RM.</description>  
+      <name>yarn.resourcemanager.address</name>  
+      <defaultValue>0.0.0.0:8032</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>基础</type> 
+   </property>  
+   <property> 
+      <description>The number of threads used to handle applications manager requests.</description>  
+      <name>yarn.resourcemanager.client.thread-count</name>  
+      <defaultValue>50</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>The expiry interval for application master reporting.</description>  
+      <name>yarn.am.liveness-monitor.expiry-interval-ms</name>  
+      <defaultValue>600000</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>The Kerberos principal for the resource manager.</description>  
+      <name>yarn.resourcemanager.principal</name>  
+      <source>yarn-site.xml</source>  
+      <defaultValue/>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>The address of the scheduler interface.</description>  
+      <name>yarn.resourcemanager.scheduler.address</name>  
+      <defaultValue>0.0.0.0:8030</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>基础</type> 
+   </property>  
+   <property> 
+      <description>Number of threads to handle scheduler interface.</description>  
+      <name>yarn.resourcemanager.scheduler.client.thread-count</name>  
+      <defaultValue>50</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>The address of the RM web application.</description>  
+      <name>yarn.resourcemanager.webapp.address</name>  
+      <defaultValue>0.0.0.0:8088</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>基础</type> 
+   </property>  
+   <property> 
+      <name>yarn.resourcemanager.resource-tracker.address</name>  
+      <defaultValue>0.0.0.0:8031</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>基础</type> 
+   </property>  
+   <property> 
+      <description>Are acls enabled.</description>  
+      <name>yarn.acl.enable</name>  
+      <defaultValue>true</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>ACL of who can be admin of the YARN cluster.</description>  
+      <name>yarn.admin.acl</name>  
+      <defaultValue>*</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>The address of the RM admin interface.</description>  
+      <name>yarn.resourcemanager.admin.address</name>  
+      <defaultValue>0.0.0.0:8033</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>基础</type> 
+   </property>  
+   <property> 
+      <description>Number of threads used to handle RM admin interface.</description>  
+      <name>yarn.resourcemanager.admin.client.thread-count</name>  
+      <defaultValue>1</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>How often should the RM check that the AM is still alive.</description>  
+      <name>yarn.resourcemanager.amliveliness-monitor.interval-ms</name>  
+      <defaultValue>1000</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>The maximum number of application master retries.</description>  
+      <name>yarn.resourcemanager.am.max-retries</name>  
+      <defaultValue>1</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>How often to check that containers are still alive.</description>  
+      <name>yarn.resourcemanager.container.liveness-monitor.interval-ms</name>  
+      <defaultValue>600000</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>The keytab for the resource manager.</description>  
+      <name>yarn.resourcemanager.keytab</name>  
+      <defaultValue>/etc/krb5.keytab</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>How long to wait until a node manager is considered dead.</description>  
+      <name>yarn.nm.liveness-monitor.expiry-interval-ms</name>  
+      <defaultValue>600000</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>How often to check that node managers are still alive.</description>  
+      <name>yarn.resourcemanager.nm.liveness-monitor.interval-ms</name>  
+      <defaultValue>1000</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Path to file with nodes to include.</description>  
+      <name>yarn.resourcemanager.nodes.include-path</name>  
+      <value/>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Path to file with nodes to exclude.</description>  
+      <name>yarn.resourcemanager.nodes.exclude-path</name>  
+      <value/>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Number of threads to handle resource tracker calls.</description>  
+      <name>yarn.resourcemanager.resource-tracker.client.thread-count</name>  
+      <defaultValue>50</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>The class to use as the resource scheduler.</description>  
+      <name>yarn.resourcemanager.scheduler.class</name>  
+      <defaultValue>org.apache.hadoop.yarn.server.resourcemanager.scheduler.fifo.FifoScheduler</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>The minimum allocation size for every container request at the RM, in MBs.</description>  
+      <name>yarn.scheduler.minimum-allocation-mb</name>  
+      <defaultValue>1024</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>The maximum allocation size for every container request at the RM, in MBs.</description>  
+      <name>yarn.scheduler.maximum-allocation-mb</name>  
+      <defaultValue>8192</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>The class to use as the persistent store.</description>  
+      <name>yarn.resourcemanager.store.class</name>  
+      <source>yarn-site.xml</source>  
+      <defaultValue/>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>The maximum number of completed applications RM keeps.</description>  
+      <name>yarn.resourcemanager.max-completed-applications</name>  
+      <defaultValue>10000</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Interval at which the delayed token removal thread runs</description>  
+      <name>yarn.resourcemanager.delayed.delegation-token.removal-interval-ms</name>  
+      <defaultValue>30000</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Interval for the roll over for the master key used to generate application tokens</description>  
+      <name>yarn.resourcemanager.application-tokens.master-key-rolling-interval-secs</name>  
+      <defaultValue>86400</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Interval for the roll over for the master key used to generate container tokens.</description>  
+      <name>yarn.resourcemanager.container-tokens.master-key-rolling-interval-secs</name>  
+      <defaultValue>86400</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!-- Node Manager Configs -->  
+   <property> 
+      <description>The address of the container manager in the NM.</description>  
+      <name>yarn.nodemanager.address</name>  
+      <defaultValue>0.0.0.0:0</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Environment variables that should be forwarded from the NodeManager's environment to the container's.</description>  
+      <name>yarn.nodemanager.admin-env</name>  
+      <defaultValue>MALLOC_ARENA_MAX=$MALLOC_ARENA_MAX</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Environment variables that containers may override rather than use NodeManager's default.</description>  
+      <name>yarn.nodemanager.env-whitelist</name>  
+      <defaultValue>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,YARN_HOME</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>who will execute(launch) the containers.</description>  
+      <name>yarn.nodemanager.container-executor.class</name>  
+      <defaultValue>org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor</defaultValue>  
+      <!--<defaultValue>org.apache.hadoop.yarn.server.nodemanager.LinuxContainerExecutor</defaultValue>-->  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Number of threads container manager uses.</description>  
+      <name>yarn.nodemanager.container-manager.thread-count</name>  
+      <defaultValue>20</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Number of threads used in cleanup.</description>  
+      <name>yarn.nodemanager.delete.thread-count</name>  
+      <defaultValue>4</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Number of seconds after an application finishes before the nodemanager's DeletionService will delete the application's localized file directory and log directory.</description>  
+      <name>yarn.nodemanager.delete.debug-delay-sec</name>  
+      <defaultValue>0</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Heartbeat interval to RM</description>  
+      <name>yarn.nodemanager.heartbeat.interval-ms</name>  
+      <defaultValue>1000</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Keytab for NM.</description>  
+      <name>yarn.nodemanager.keytab</name>  
+      <defaultValue>/etc/krb5.keytab</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>List of directories to store localized files</description>  
+      <name>yarn.nodemanager.local-dirs</name>  
+      <defaultValue>${hadoop.tmp.dir}/nm-local-dir</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>基础</type> 
+   </property>  
+   <property> 
+      <description>Address where the localizer IPC is.</description>  
+      <name>yarn.nodemanager.localizer.address</name>  
+      <defaultValue>0.0.0.0:8040</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Interval in between cache cleanups.</description>  
+      <name>yarn.nodemanager.localizer.cache.cleanup.interval-ms</name>  
+      <defaultValue>600000</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Target size of localizer cache in MB, per local directory.</description>  
+      <name>yarn.nodemanager.localizer.cache.target-size-mb</name>  
+      <defaultValue>10240</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Number of threads to handle localization requests.</description>  
+      <name>yarn.nodemanager.localizer.client.thread-count</name>  
+      <defaultValue>5</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Number of threads to use for localization fetching.</description>  
+      <name>yarn.nodemanager.localizer.fetch.thread-count</name>  
+      <defaultValue>4</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Where to store container logs.</description>  
+      <name>yarn.nodemanager.log-dirs</name>  
+      <defaultValue>${yarn.log.dir}/userlogs</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Whether to enable log aggregation</description>  
+      <name>yarn.log-aggregation-enable</name>  
+      <defaultValue>false</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>How long to keep aggregation logs before deleting them. -1 disables.</description>  
+      <name>yarn.log-aggregation.retain-seconds</name>  
+      <defaultValue>-1</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Time in seconds to retain user logs. Only applicable if log aggregation is disabled</description>  
+      <name>yarn.nodemanager.log.retain-seconds</name>  
+      <defaultValue>10800</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Where to aggregate logs to.</description>  
+      <name>yarn.nodemanager.remote-app-log-dir</name>  
+      <defaultValue>/tmp/logs</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>The remote log dir will be created at {yarn.nodemanager.remote-app-log-dir}/${user}/{thisParam}</description>  
+      <name>yarn.nodemanager.remote-app-log-dir-suffix</name>  
+      <defaultValue>logs</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Amount of physical memory, in MB, that can be allocated for containers.</description>  
+      <name>yarn.nodemanager.resource.memory-mb</name>  
+      <defaultValue>8192</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Ratio between virtual memory to physical memory when setting memory limits for containers.</description>  
+      <name>yarn.nodemanager.vmem-pmem-ratio</name>  
+      <defaultValue>2.1</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>NM Webapp address.</description>  
+      <name>yarn.nodemanager.webapp.address</name>  
+      <defaultValue>0.0.0.0:8042</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>How often to monitor containers.</description>  
+      <name>yarn.nodemanager.container-monitor.interval-ms</name>  
+      <defaultValue>3000</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Class that calculates containers current resource utilization.</description>  
+      <name>yarn.nodemanager.container-monitor.resource-calculator.class</name>  
+      <source>yarn-site.xml</source>  
+      <defaultValue/>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Frequency of running node health script.</description>  
+      <name>yarn.nodemanager.health-checker.interval-ms</name>  
+      <defaultValue>600000</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Script time out period.</description>  
+      <name>yarn.nodemanager.health-checker.script.timeout-ms</name>  
+      <defaultValue>1200000</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>The health check script to run.</description>  
+      <name>yarn.nodemanager.health-checker.script.path</name>  
+      <value/>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>The arguments to pass to the health check script.</description>  
+      <name>yarn.nodemanager.health-checker.script.opts</name>  
+      <value/>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Frequency of running disk health checker code.</description>  
+      <name>yarn.nodemanager.disk-health-checker.interval-ms</name>  
+      <defaultValue>120000</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>The minimum fraction of number of disks to be healthy for the nodemanager to launch new containers.</description>  
+      <name>yarn.nodemanager.disk-health-checker.min-healthy-disks</name>  
+      <defaultValue>0.25</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>The path to the Linux container executor.</description>  
+      <name>yarn.nodemanager.linux-container-executor.path</name>  
+      <source>yarn-site.xml</source>  
+      <defaultValue/>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>T-file compression types used to compress aggregated logs.</description>  
+      <name>yarn.nodemanager.log-aggregation.compression-type</name>  
+      <defaultValue>none</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>The kerberos principal for the node manager.</description>  
+      <name>yarn.nodemanager.principal</name>  
+      <value/>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>yarn.nodemanager.aux-services</name>  
+      <value/>  
+      <!-- <defaultValue>mapreduce.shuffle</defaultValue> -->  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>No. of ms to wait between sending a SIGTERM and SIGKILL to a container</description>  
+      <name>yarn.nodemanager.sleep-delay-before-sigkill.ms</name>  
+      <defaultValue>250</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Max time to wait for a process to come up when trying to cleanup a container</description>  
+      <name>yarn.nodemanager.process-kill-wait.ms</name>  
+      <defaultValue>2000</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!--Map Reduce configuration-->  
+   <property> 
+      <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>  
+      <defaultValue>org.apache.hadoop.mapred.ShuffleHandler</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>mapreduce.job.jar</name>  
+      <value/>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>mapreduce.job.hdfs-servers</name>  
+      <defaultValue>${fs.defaultFS}</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!-- WebAppProxy Configuration-->  
+   <property> 
+      <description>The kerberos principal for the proxy, if the proxy is not running as part of the RM.</description>  
+      <name>yarn.web-proxy.principal</name>  
+      <value/>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>Keytab for WebAppProxy, if the proxy is not running as part of the RM.</description>  
+      <name>yarn.web-proxy.keytab</name>  
+      <source>yarn-site.xml</source>  
+      <defaultValue/>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>The address for the web proxy as HOST:PORT, if this is not given then the proxy will run as part of the RM</description>  
+      <name>yarn.web-proxy.address</name>  
+      <value/>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <description>CLASSPATH for YARN applications. A comma-separated list of CLASSPATH entries</description>  
+      <name>yarn.application.classpath</name>  
+      <defaultValue>$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$YARN_HOME/share/hadoop/yarn/*,$YARN_HOME/share/hadoop/yarn/lib/*,$YARN_HOME/share/hadoop/mapreduce/*,$YARN_HOME/share/hadoop/mapreduce/lib/*</defaultValue>  
+      <source>yarn-site.xml</source>  
+      <type>高级</type> 
+   </property> 
+</configuration>

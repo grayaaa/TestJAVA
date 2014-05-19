@@ -1,0 +1,770 @@
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!--
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<configuration> 
+   <property> 
+      <name>hbase.rootdir</name>  
+      <defaultValue>file:///tmp/hbase-${user.name}/hbase</defaultValue>  
+      <description>The directory shared by region servers and into which HBase persists.</description>  
+      <source>hbase-site.xml</source>  
+      <type>基础</type> 
+   </property>  
+   <property> 
+      <name>hbase.master.port</name>  
+      <defaultValue>60000</defaultValue>  
+      <description>The port the HBase Master should bind to.</description>  
+      <type>基础</type>  
+      <source>hbase-site.xml</source> 
+   </property>  
+   <property> 
+      <name>hbase.cluster.distributed</name>  
+      <defaultValue>true</defaultValue>  
+      <description>The mode the cluster will be in.</description>  
+      <source>hbase-site.xml</source>  
+      <type>基础</type> 
+   </property>  
+   <property> 
+      <name>hbase.tmp.dir</name>  
+      <defaultValue>/dfs/hbase-${user.name}</defaultValue>  
+      <description>Temporary directory on the local filesystem.</description>  
+      <source>hbase-site.xml</source>  
+      <type>基础</type> 
+   </property>  
+   <property> 
+      <name>hbase.master.info.port</name>  
+      <defaultValue>60010</defaultValue>  
+      <description>The port for the HBase Master web UI. Set to -1 if you do not want a UI instance run.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.master.info.bindAddress</name>  
+      <defaultValue>0.0.0.0</defaultValue>  
+      <description>The bind address for the HBase Master web UI</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.client.write.buffer</name>  
+      <defaultValue>2097152</defaultValue>  
+      <description>Default size of the HTable clien write buffer in bytes.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regionserver.port</name>  
+      <defaultValue>60020</defaultValue>  
+      <description>The port the HBase RegionServer binds to.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regionserver.info.port</name>  
+      <defaultValue>60030</defaultValue>  
+      <description>The port for the HBase RegionServer web UI Set to -1 if you do not want the RegionServer UI to run.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regionserver.info.port.auto</name>  
+      <defaultValue>false</defaultValue>  
+      <description>Whether or not the Master or RegionServer UI should search for a port to bind to.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regionserver.info.bindAddress</name>  
+      <defaultValue>0.0.0.0</defaultValue>  
+      <description>The address for the HBase RegionServer web UI</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regionserver.class</name>  
+      <defaultValue>org.apache.hadoop.hbase.ipc.HRegionInterface</defaultValue>  
+      <description>The RegionServer interface to use. Used by the client opening proxy to remote region server.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.client.pause</name>  
+      <defaultValue>1000</defaultValue>  
+      <description>General client pause value. Used mostly as value to wait before running a retry of a failed get, region lookup, etc.</description>  
+      <type>高级</type>  
+      <source>hbase-site.xml</source> 
+   </property>  
+   <property> 
+      <name>hbase.client.retries.number</name>  
+      <defaultValue>10</defaultValue>  
+      <description>Maximum retries. Used as maximum for all retryable operations</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.bulkload.retries.number</name>  
+      <defaultValue>0</defaultValue>  
+      <description/>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.client.scanner.caching</name>  
+      <defaultValue>1</defaultValue>  
+      <description>Number of rows that will be fetched when calling next on a scanner if it is not served from memory.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.client.keyvalue.maxsize</name>  
+      <defaultValue>10485760</defaultValue>  
+      <description>Specifies the combined maximum allowed size of a KeyValue instance.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regionserver.lease.period</name>  
+      <defaultValue>60000</defaultValue>  
+      <description>HRegion server lease period in milliseconds.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regionserver.handler.count</name>  
+      <defaultValue>10</defaultValue>  
+      <description>Count of RPC Listener instances spun up on RegionServers.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regionserver.msginterval</name>  
+      <defaultValue>3000</defaultValue>  
+      <description>Interval between messages from the RegionServer to Master in milliseconds.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regionserver.optionallogflushinterval</name>  
+      <defaultValue>1000</defaultValue>  
+      <description>Sync the HLog to the HDFS after this interval .</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regionserver.regionSplitLimit</name>  
+      <defaultValue>2147483647</defaultValue>  
+      <description>Limit for the number of regions after which no more region splitting should take place.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regionserver.logroll.period</name>  
+      <defaultValue>3600000</defaultValue>  
+      <description>Period at which we will roll the commit log regardless of how many edits it has.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regionserver.logroll.errors.tolerated</name>  
+      <defaultValue>2</defaultValue>  
+      <description>The number of consecutive WAL close errors we will allow before triggering a server abort.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regionserver.hlog.reader.impl</name>  
+      <defaultValue>org.apache.hadoop.hbase.regionserver.wal.SequenceFileLogReader</defaultValue>  
+      <description>The HLog file reader implementation.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regionserver.hlog.writer.impl</name>  
+      <defaultValue>org.apache.hadoop.hbase.regionserver.wal.SequenceFileLogWriter</defaultValue>  
+      <description>The HLog file writer implementation.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regionserver.nbreservationblocks</name>  
+      <defaultValue>4</defaultValue>  
+      <description>The number of resevoir blocks of memory release on OOME so we can cleanup properly before server shutdown.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.zookeeper.dns.interface</name>  
+      <defaultValue>default</defaultValue>  
+      <description>The name of the Network Interface from which a ZooKeeper server should report its IP address.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.zookeeper.dns.nameserver</name>  
+      <defaultValue>default</defaultValue>  
+      <description>The host name or IP address of the name server (DNS)</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regionserver.dns.interface</name>  
+      <defaultValue>default</defaultValue>  
+      <description>The name of the Network Interface from which a region server should report its IP address.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regionserver.dns.nameserver</name>  
+      <defaultValue>default</defaultValue>  
+      <description>The host name or IP address of the name server (DNS)</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.master.dns.interface</name>  
+      <defaultValue>default</defaultValue>  
+      <description>The name of the Network Interface from which a master should report its IP address.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.master.dns.nameserver</name>  
+      <defaultValue>default</defaultValue>  
+      <description>The host name or IP address of the name server (DNS)</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.balancer.period</name>  
+      <defaultValue>300000</defaultValue>  
+      <description>Period at which the region balancer runs in the Master.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regions.slop</name>  
+      <defaultValue>0.2</defaultValue>  
+      <description>Rebalance if any regionserver has average + (average * slop) regions.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.master.logcleaner.ttl</name>  
+      <defaultValue>600000</defaultValue>  
+      <description>Maximum time a HLog can stay in the .oldlogdir directory, after which it will be cleaned by a Master thread.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.master.logcleaner.plugins</name>  
+      <defaultValue>org.apache.hadoop.hbase.master.cleaner.TimeToLiveLogCleaner</defaultValue>  
+      <description>A comma-separated list of LogCleanerDelegate invoked by the LogsCleaner service.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regionserver.global.memstore.upperLimit</name>  
+      <defaultValue>0.4</defaultValue>  
+      <description>Maximum size of all memstores in a region server before new updates are blocked.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regionserver.global.memstore.lowerLimit</name>  
+      <defaultValue>0.35</defaultValue>  
+      <description/>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.server.thread.wakefrequency</name>  
+      <defaultValue>10000</defaultValue>  
+      <description>Time to sleep in between searches for work (in milliseconds).</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.server.versionfile.writeattempts</name>  
+      <defaultValue>3</defaultValue>  
+      <description>How many time to retry attempting to write a version file before just aborting.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.hregion.memstore.flush.size</name>  
+      <defaultValue>134217728</defaultValue>  
+      <description>Memstore will be flushed to disk if size of the memstore exceeds this number of bytes.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.hregion.preclose.flush.size</name>  
+      <defaultValue>5242880</defaultValue>  
+      <description/>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.hregion.memstore.block.multiplier</name>  
+      <defaultValue>2</defaultValue>  
+      <description>Block updates if memstore has hbase.hregion.block.memstore time hbase.hregion.flush.size bytes.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.hregion.memstore.mslab.enabled</name>  
+      <defaultValue>true</defaultValue>  
+      <description>Enables the MemStore-Local Allocation Buffer</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.hregion.max.filesize</name>  
+      <defaultValue>10737418240</defaultValue>  
+      <description>Maximum HStoreFile size.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.hstore.compactionThreshold</name>  
+      <defaultValue>3</defaultValue>  
+      <description>Larger numbers put off compaction but when it runs, it takes longer to complete.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.hstore.blockingStoreFiles</name>  
+      <defaultValue>7</defaultValue>  
+      <description>(one StoreFile is written per flush of MemStore</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.hstore.blockingWaitTime</name>  
+      <defaultValue>90000</defaultValue>  
+      <description>The time an HRegion will block updates for after hitting the StoreFile limit defined by hbase.hstore.blockingStoreFiles.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.hstore.compaction.max</name>  
+      <defaultValue>10</defaultValue>  
+      <description>Max number of HStoreFiles to compact per 'minor' compaction.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.hregion.majorcompaction</name>  
+      <defaultValue>86400000</defaultValue>  
+      <description>The time (in miliseconds) between 'major' compactions of all HStoreFiles in a region.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.mapreduce.hfileoutputformat.blocksize</name>  
+      <defaultValue>65536</defaultValue>  
+      <description>The mapreduce HFileOutputFormat writes storefiles/hfiles.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hfile.block.cache.size</name>  
+      <defaultValue>0.25</defaultValue>  
+      <description>Percentage of maximum heap (-Xmx setting) to allocate to block cache used by HFile/StoreFile.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.hash.type</name>  
+      <defaultValue>murmur</defaultValue>  
+      <description>The hashing algorithm for use in HashFunction.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hfile.block.index.cacheonwrite</name>  
+      <defaultValue>false</defaultValue>  
+      <description>This allows to put non-root multi-level index blocks into the block cache at the time the index is being written.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regionserver.checksum.verify</name>  
+      <defaultValue>false</defaultValue>  
+      <description>Allow hbase to do checksums rather than using hdfs checksums. This is a backwards incompatible change.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hfile.index.block.max.size</name>  
+      <defaultValue>131072</defaultValue>  
+      <description/>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hfile.format.version</name>  
+      <defaultValue>2</defaultValue>  
+      <description>The HFile format version to use for new files.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>io.storefile.bloom.block.size</name>  
+      <defaultValue>131072</defaultValue>  
+      <description>The size in bytes of a single block ("chunk") of a compound Bloom filter.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>io.storefile.bloom.cacheonwrite</name>  
+      <defaultValue>false</defaultValue>  
+      <description>Enables cache-on-write for inline blocks of a compound Bloom filter.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.rs.cacheblocksonwrite</name>  
+      <defaultValue>false</defaultValue>  
+      <description>Whether an HFile block should be added to the block cache when the block is finished.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.rpc.engine</name>  
+      <defaultValue>org.apache.hadoop.hbase.ipc.WritableRpcEngine</defaultValue>  
+      <description>Implementation of org.apache.hadoop.hbase.ipc.RpcEngine to be used for client / server RPC call marshalling.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!-- The following properties configure authentication information for
+       HBase processes when using Kerberos security.  There are no default
+       values, included here for documentation purposes -->  
+   <property> 
+      <name>hbase.master.keytab.file</name>  
+      <value/>  
+      <description>Full path to the kerberos keytab file to use for logging in the configured HMaster server principal.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.master.kerberos.principal</name>  
+      <value/>  
+      <description>The kerberos principal name that should be used to run the HMaster process.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regionserver.keytab.file</name>  
+      <value/>  
+      <description>Full path to the kerberos keytab file to use for logging in the configured HRegionServer server principal.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.regionserver.kerberos.principal</name>  
+      <value/>  
+      <description>The kerberos principal name that should be used to run the HRegionServer process.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!-- Additional configuration specific to HBase security -->  
+   <property> 
+      <name>hadoop.policy.file</name>  
+      <defaultValue>hbase-policy.xml</defaultValue>  
+      <description>The policy configuration file used by RPC servers to make authorization decisions on client requests.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.superuser</name>  
+      <value/>  
+      <description>List of users or groups, who are allowed full privileges, regardless of stored ACLs, across the cluster.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.auth.key.update.interval</name>  
+      <defaultValue>86400000</defaultValue>  
+      <description>The update interval for master key for authentication tokens in servers in milliseconds.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.auth.token.max.lifetime</name>  
+      <defaultValue>604800000</defaultValue>  
+      <description>The maximum lifetime in milliseconds after which an authentication token expires.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>zookeeper.session.timeout</name>  
+      <defaultValue>180000</defaultValue>  
+      <description>ZooKeeper session timeout. HBase passes this to the zk quorum as suggested maximum time for a session .</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>zookeeper.znode.parent</name>  
+      <defaultValue>/hbase</defaultValue>  
+      <description>Root ZNode for HBase in ZooKeeper.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>zookeeper.znode.rootserver</name>  
+      <defaultValue>root-region-server</defaultValue>  
+      <description>Path to ZNode holding root region location.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>zookeeper.znode.acl.parent</name>  
+      <defaultValue>acl</defaultValue>  
+      <description>Root ZNode for access control lists.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.coprocessor.region.classes</name>  
+      <value/>  
+      <description>A comma-separated list of Coprocessors that are loaded by default on all tables.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.coprocessor.master.classes</name>  
+      <value/>  
+      <description>A comma-separated list of org.apache.hadoop.hbase.coprocessor.MasterObserver coprocessors that are loaded by default on the active HMaster process.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!--
+  The following three properties are used together to create the list of
+  host:peer_port:leader_port quorum servers for ZooKeeper.
+
+         <property>
+               <name>hbase.zookeeper.quorum</name>
+               <defaultValue>localhost</defaultValue>
+               <description>Comma separated list of servers in the ZooKeeper Quorum.
+    For example, "host1.mydomain.com,host2.mydomain.com,host3.mydomain.com".
+    By default this is set to localhost for local and pseudo-distributed modes
+    of operation. For a fully-distributed setup, this should be set to a full
+    list of ZooKeeper quorum servers. If HBASE_MANAGES_ZK is set in hbase-env.sh
+    this is the list of servers which we will start/stop ZooKeeper on.
+    </description>
+	           <source>hbase-site.xml</source>
+            <type>高级</type>    </property>
+			  -->  
+   <property> 
+      <name>hbase.zookeeper.peerport</name>  
+      <defaultValue>2888</defaultValue>  
+      <description>Port used by ZooKeeper peers to talk to each other.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.zookeeper.leaderport</name>  
+      <defaultValue>3888</defaultValue>  
+      <description>Port used by ZooKeeper for leader election.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.zookeeper.useMulti</name>  
+      <defaultValue>true</defaultValue>  
+      <description>Instructs HBase to make use of ZooKeeper's multi-update functionality.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!-- End of properties used to generate ZooKeeper host:port quorum list. -->  
+   <!--
+  Beginning of properties that are directly mapped from ZooKeeper's zoo.cfg.
+  All properties with an "hbase.zookeeper.property." prefix are converted for
+  ZooKeeper's configuration. Hence, if you want to add an option from zoo.cfg,
+  e.g.  "initLimit=10" you would append the following to your configuration:
+    <property>
+      <name>hbase.zookeeper.property.initLimit</name>
+      <defaultValue>10</defaultValue>
+    </property>
+  -->  
+   <property> 
+      <name>hbase.zookeeper.property.initLimit</name>  
+      <defaultValue>10</defaultValue>  
+      <description>Property from ZooKeeper's config zoo.cfg. The number of ticks that the initial synchronization phase can take.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.zookeeper.property.syncLimit</name>  
+      <defaultValue>5</defaultValue>  
+      <description>Property from ZooKeeper's config zoo.cfg.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.zookeeper.property.dataDir</name>  
+      <defaultValue>${hbase.tmp.dir}/zookeeper</defaultValue>  
+      <description>Property from ZooKeeper's config zoo.cfg. The directory where the snapshot is stored.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.zookeeper.property.clientPort</name>  
+      <defaultValue>2181</defaultValue>  
+      <description>Property from ZooKeeper's config zoo.cfg.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.zookeeper.property.maxClientCnxns</name>  
+      <defaultValue>300</defaultValue>  
+      <description>Property from ZooKeeper's config zoo.cfg.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!-- End of properties that are directly mapped from ZooKeeper's zoo.cfg -->  
+   <property> 
+      <name>hbase.rest.port</name>  
+      <defaultValue>8080</defaultValue>  
+      <description>The port for the HBase REST server.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.rest.readonly</name>  
+      <defaultValue>false</defaultValue>  
+      <description>false: All HTTP methods are permitted - GET/PUT/POST/DELETE. true: Only the GET method is permitted.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property skipInDoc="true"> 
+      <name>hbase.defaults.for.version</name>  
+      <defaultValue>@@@VERSION@@@</defaultValue>  
+      <description>This defaults file was compiled for version @@@VERSION@@@.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.defaults.for.version.skip</name>  
+      <defaultValue>false</defaultValue>  
+      <description>Set to true to skip the 'hbase.defaults.for.version' check.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.coprocessor.abortonerror</name>  
+      <defaultValue>false</defaultValue>  
+      <description/>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.online.schema.update.enable</name>  
+      <defaultValue>false</defaultValue>  
+      <description>Set true to enable online schema changes.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>dfs.support.append</name>  
+      <defaultValue>true</defaultValue>  
+      <description>Does HDFS allow appends to files? This is an hdfs config.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.thrift.minWorkerThreads</name>  
+      <defaultValue>16</defaultValue>  
+      <description>The "core size" of the thread pool. New threads are created on every connection until this many threads are created.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.thrift.maxWorkerThreads</name>  
+      <defaultValue>1000</defaultValue>  
+      <description>The maximum size of the thread pool.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.thrift.maxQueuedRequests</name>  
+      <defaultValue>1000</defaultValue>  
+      <description>The maximum number of pending Thrift connections waiting in the queue.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.offheapcache.percentage</name>  
+      <defaultValue>0</defaultValue>  
+      <description>The amount of off heap space to be allocated towards the experimental off heap cache.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.data.umask.enable</name>  
+      <defaultValue>false</defaultValue>  
+      <description>Enable, if true, that file permissions should be assigned to the files written by the regionserver</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.data.umask</name>  
+      <defaultValue>000</defaultValue>  
+      <description>File permissions that should be used to write data files when hbase.data.umask.enable is true</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.metrics.showTableName</name>  
+      <defaultValue>true</defaultValue>  
+      <description>Whether to include the prefix "tbl.tablename" in per-column family metrics.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.table.archive.directory</name>  
+      <defaultValue>.archive</defaultValue>  
+      <description>Per-table directory name under which to backup files for a table.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.master.hfilecleaner.plugins</name>  
+      <defaultValue>org.apache.hadoop.hbase.master.cleaner.TimeToLiveHFileCleaner</defaultValue>  
+      <description>A comma-separated list of HFileCleanerDelegate invoked by the HFileCleaner service.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.rest.threads.max</name>  
+      <defaultValue>100</defaultValue>  
+      <description>The maximum number of threads of the REST server thread pool. Threads in the pool are reused to process REST requests.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hbase.rest.threads.min</name>  
+      <defaultValue>2</defaultValue>  
+      <description>The minimum number of threads of the REST server thread pool.</description>  
+      <source>hbase-site.xml</source>  
+      <type>高级</type> 
+   </property> 
+</configuration>

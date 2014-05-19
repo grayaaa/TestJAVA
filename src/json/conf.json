@@ -1,0 +1,57 @@
+{
+	"BaseInfo" : {
+		"SecurityPolicy" : " kerberos|simple ",
+		"kerberosNode " : "",
+		"model" : "simple|federation",
+		"NameNodeDir" : "",
+		"DataNodeDir" : ""
+	},
+	"simple" : {
+		"NameNode" : "",
+		"SecondaryNameNode" : "",
+		"DataNode" : ""
+	},
+	"federation" : [{
+				"NSName" : "",
+				"MountPath" : "",
+				"isHA" : "true|false",
+				"isFailover" : "true|false",
+				"NameNode" : "",
+				"BackupNameNode" : "",
+				"SecondaryNameNode" : "",
+				"DataNode" : "",
+				"JournalNode" : ""
+			}, {
+				"NameServiceName" : "",
+				"MountPath" : "",
+				"isHA" : "true|false",
+				"isFailover" : "true|false",
+				"NameNode" : "",
+				"BackupNameNode" : "",
+				"SecondaryNameNode" : "",
+				"DataNode" : "",
+				"JournalNode" : ""
+			}],
+	"ZooKeeper" : {
+		"ZooKeeperServer" : ""
+	},
+	"MapReduce" : {
+		"JobTracker" : "",
+		"TaskTracker" : ""
+	},
+	"HBase" : {
+		"HMaster" : "",
+		"RegionServer" : "",
+		"HBaseThrift2" : ""
+	},
+	"Hive" : {
+		"DBNode" : "",
+		"DBType" : "",
+		"DBName" : "",
+		"DBUesrname" : "",
+		"DBPassword" : "",
+		"MetaStore" : "",
+		"HiveServer2" : ""
+	},
+	"test" : ""
+}

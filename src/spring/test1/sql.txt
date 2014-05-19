@@ -1,0 +1,6 @@
+CREATE TABLE `person` (
+  `id` decimal(22,0) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `age` int(255) DEFAULT NULL,
+  `sex` varchar(255) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;

@@ -1,0 +1,17 @@
+2013-09-18 00:40:29,797 INFO org.apache.hadoop.hdfs.qjournal.server.Journal: Formatting org.apache.hadoop.hdfs.qjournal.server.Journal@60c017e9 with namespace info: lv=-40;cid=sdh_xdata;nsid=1881717657;c=0;bpid=BP-1587247493-10.0.31.193-1379436029358
+2013-09-18 00:40:29,797 INFO org.apache.hadoop.hdfs.server.common.Storage: Formatting journal storage directory Storage Directory /dfs/jn/ns with nsid: 1881717657
+2013-09-18 00:40:29,923 INFO org.apache.hadoop.hdfs.server.common.Storage: Lock on /dfs/jn/ns/in_use.lock acquired by nodename 24394@hadoop195
+2013-09-18 00:40:30,361 INFO org.apache.hadoop.ipc.Server: IPC Server listener on 8485: readAndProcess threw exception java.io.IOException: Connection reset by peer from client 10.0.31.193. Count of bytes read: 0
+java.io.IOException: Connection reset by peer
+        at sun.nio.ch.FileDispatcher.read0(Native Method)
+        at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:21)
+        at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:198)
+        at sun.nio.ch.IOUtil.read(IOUtil.java:171)
+        at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:245)
+        at org.apache.hadoop.ipc.Server.channelRead(Server.java:2154)
+        at org.apache.hadoop.ipc.Server.access$2600(Server.java:108)
+        at org.apache.hadoop.ipc.Server$Connection.readAndProcess(Server.java:1289)
+        at org.apache.hadoop.ipc.Server$Listener.doRead(Server.java:711)
+        at org.apache.hadoop.ipc.Server$Listener$Reader.doRunLoop(Server.java:510)
+        at org.apache.hadoop.ipc.Server$Listener$Reader.run(Server.java:485)
+2013-09-18 00:40:46,527 INFO org.apache.hadoop.hdfs.qjournal.server.Journal: Updating lastPromisedEpoch from 0 to 1 for client /10.0.31.193"

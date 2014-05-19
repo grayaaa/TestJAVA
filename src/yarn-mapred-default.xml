@@ -1,0 +1,1416 @@
+
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+--><?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Do not modify this file directly.  Instead, copy entries that you -->
+<!-- wish to modify from this file into mapred-site.xml and change them -->
+<!-- there.  If mapred-site.xml does not already exist, create it.      -->
+<configuration>
+   <property>
+      <name>mapreduce.jobtracker.jobhistory.location</name>
+      <defaultValue/>
+      <description>If job tracker is static the history files are stored in this single well known place.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.jobhistory.task.numberprogresssplits</name>
+      <defaultValue>12</defaultValue>
+      <description>Every task attempt progresses from 0.0 to 1.0 [unless it fails or is killed].</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.userhistorylocation</name>
+      <defaultValue/>
+      <description>User can specify a location to store the history files of a particular job.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.jobhistory.completed.location</name>
+      <defaultValue/>
+      <description>The completed job history files are stored at this single well known location.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.committer.setup.cleanup.needed</name>
+      <defaultValue>true</defaultValue>
+      <description>true, if job needs job-setup and job-cleanup. false, otherwise</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <!-- i/o properties -->
+   <property>
+      <name>mapreduce.task.io.sort.factor</name>
+      <defaultValue>10</defaultValue>
+      <description>The number of streams to merge at once while sorting files.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.task.io.sort.mb</name>
+      <defaultValue>100</defaultValue>
+      <description>The total amount of buffer memory to use while sorting files, in megabytes.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.map.sort.spill.percent</name>
+      <defaultValue>0.80</defaultValue>
+      <description>The soft limit in the serialization buffer.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.address</name>
+      <defaultValue>local</defaultValue>
+      <description>The host and port that the MapReduce job tracker runs at.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.local.clientfactory.class.name</name>
+      <defaultValue>org.apache.hadoop.mapred.LocalClientFactory</defaultValue>
+      <description>This the client factory that is responsible for creating local job runner client</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.http.address</name>
+      <defaultValue>0.0.0.0:50030</defaultValue>
+      <description>The job tracker http server address and port the server will listen on.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.handler.count</name>
+      <defaultValue>10</defaultValue>
+      <description>The number of server threads for the JobTracker. </description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.tasktracker.report.address</name>
+      <defaultValue>127.0.0.1:0</defaultValue>
+      <description>The interface and port that task tracker server listens on.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.cluster.local.dir</name>
+      <defaultValue>${hadoop.tmp.dir}/mapred/local</defaultValue>
+      <description>The local directory where MapReduce stores intermediate data files.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.system.dir</name>
+      <defaultValue>${hadoop.tmp.dir}/mapred/system</defaultValue>
+      <description>The directory where MapReduce stores control files.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.staging.root.dir</name>
+      <defaultValue>${hadoop.tmp.dir}/mapred/staging</defaultValue>
+      <description>The root of the staging area for users' job files</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.cluster.temp.dir</name>
+      <defaultValue>${hadoop.tmp.dir}/mapred/temp</defaultValue>
+      <description>A shared directory for temporary files.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.tasktracker.local.dir.minspacestart</name>
+      <defaultValue>0</defaultValue>
+      <description>If the space in mapreduce.cluster.local.dir drops under this, do not ask for more tasks. Value in bytes.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.tasktracker.local.dir.minspacekill</name>
+      <defaultValue>0</defaultValue>
+      <description>If the space in mapreduce.cluster.local.dir drops under this, do not ask more tasks until all the current ones have finished and cleaned up.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.expire.trackers.interval</name>
+      <defaultValue>600000</defaultValue>
+      <description>Expert: The time-interval, in miliseconds, after which a tasktracker is declared 'lost' if it doesn't send heartbeats.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.tasktracker.instrumentation</name>
+      <defaultValue>org.apache.hadoop.mapred.TaskTrackerMetricsInst</defaultValue>
+      <description>Expert: The instrumentation class to associate with each TaskTracker.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.tasktracker.resourcecalculatorplugin</name>
+      <defaultValue/>
+      <description>Name of the class whose instance will be used to query resource information on the tasktracker.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.tasktracker.taskmemorymanager.monitoringinterval</name>
+      <defaultValue>5000</defaultValue>
+      <description>The interval, in milliseconds, for which the tasktracker waits between two cycles of monitoring its tasks' memory usage.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.tasktracker.tasks.sleeptimebeforesigkill</name>
+      <defaultValue>5000</defaultValue>
+      <description>The time, in milliseconds, the tasktracker waits for sending a SIGKILL to a task, after it has been sent a SIGTERM.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.maps</name>
+      <defaultValue>2</defaultValue>
+      <description>The default number of map tasks per job. Ignored when mapreduce.jobtracker.address is "local".</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.reduces</name>
+      <defaultValue>1</defaultValue>
+      <description>The default number of reduce tasks per job.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.restart.recover</name>
+      <defaultValue>false</defaultValue>
+      <description>"true" to enable (job) recovery upon restart, "false" to start afresh</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.jobhistory.block.size</name>
+      <defaultValue>3145728</defaultValue>
+      <description>The block size of the job history file.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.taskscheduler</name>
+      <defaultValue>org.apache.hadoop.mapred.JobQueueTaskScheduler</defaultValue>
+      <description>The class responsible for scheduling the tasks.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.split.metainfo.maxsize</name>
+      <defaultValue>10000000</defaultValue>
+      <description>The maximum permissible size of the split metainfo file.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.taskscheduler.maxrunningtasks.perjob</name>
+      <defaultValue/>
+      <description>The maximum number of running tasks for a job before it gets preempted. No limits if undefined.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.map.maxattempts</name>
+      <defaultValue>4</defaultValue>
+      <description>Expert: The maximum number of attempts per map task. In other words, framework will try to execute a map task these many number of times before giving up on it.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.reduce.maxattempts</name>
+      <defaultValue>4</defaultValue>
+      <description>Expert: The maximum number of attempts per reduce task.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.reduce.shuffle.retry-delay.max.ms</name>
+      <defaultValue>60000</defaultValue>
+      <description>The maximum number of ms the reducer will delay before retrying to download map data.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.reduce.shuffle.parallelcopies</name>
+      <defaultValue>5</defaultValue>
+      <description>The default number of parallel transfers run by reduce during the copy(shuffle) phase.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.reduce.shuffle.connect.timeout</name>
+      <defaultValue>180000</defaultValue>
+      <description>Expert: The maximum amount of time (in milli seconds) reduce task spends in trying to connect to a tasktracker for getting map output.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.reduce.shuffle.read.timeout</name>
+      <defaultValue>180000</defaultValue>
+      <description>Expert: The maximum amount of time (in milli seconds) reduce task waits for map output data to be available for reading after obtaining connection.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.task.timeout</name>
+      <defaultValue>600000</defaultValue>
+      <description>The number of milliseconds before a task will be terminated if it neither reads an input, writes an output, nor updates its status string.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.tasktracker.map.tasks.maximum</name>
+      <defaultValue>2</defaultValue>
+      <description>The maximum number of map tasks that will be run simultaneously by a task tracker.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.tasktracker.reduce.tasks.maximum</name>
+      <defaultValue>2</defaultValue>
+      <description>The maximum number of reduce tasks that will be run simultaneously by a task tracker.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.retiredjobs.cache.size</name>
+      <defaultValue>1000</defaultValue>
+      <description>The number of retired job status to keep in the cache.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.tasktracker.outofband.heartbeat</name>
+      <defaultValue>false</defaultValue>
+      <description>Expert: Set this to true to let the tasktracker send an out-of-band heartbeat on task-completion for better latency.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.jobhistory.lru.cache.size</name>
+      <defaultValue>5</defaultValue>
+      <description>The number of job history files loaded in memory. The jobs are loaded when they are first accessed. The cache is cleared based on LRU.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.instrumentation</name>
+      <defaultValue>org.apache.hadoop.mapred.JobTrackerMetricsInst</defaultValue>
+      <description>Expert: The instrumentation class to associate with each JobTracker.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapred.child.java.opts</name>
+      <defaultValue>-Xmx200m</defaultValue>
+      <description>Java opts for the task tracker child processes.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapred.child.env</name>
+      <defaultValue/>
+      <description>User added environment variables for the task tracker child processes.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.admin.user.env</name>
+      <defaultValue>LD_LIBRARY_PATH=$HADOOP_COMMON_HOME/lib/native</defaultValue>
+      <description>Expert: Additional execution environment entries for map and reduce task processes.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.task.tmp.dir</name>
+      <defaultValue>./tmp</defaultValue>
+      <description>To set the value of tmp directory for map and reduce tasks.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.map.log.level</name>
+      <defaultValue>INFO</defaultValue>
+      <description>The logging level for the map task.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.reduce.log.level</name>
+      <defaultValue>INFO</defaultValue>
+      <description>The logging level for the reduce task.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.map.cpu.vcores</name>
+      <defaultValue>1</defaultValue>
+      <description>The number of virtual cores required for each map task.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.reduce.cpu.vcores</name>
+      <defaultValue>1</defaultValue>
+      <description>The number of virtual cores required for each reduce task.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.reduce.merge.inmem.threshold</name>
+      <defaultValue>1000</defaultValue>
+      <description>The threshold, in terms of the number of files for the in-memory merge process.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.reduce.shuffle.merge.percent</name>
+      <defaultValue>0.66</defaultValue>
+      <description>The usage threshold at which an in-memory merge will be initiated</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.reduce.shuffle.input.buffer.percent</name>
+      <defaultValue>0.70</defaultValue>
+      <description>The percentage of memory to be allocated from the maximum heap size to storing map outputs during the shuffle.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.reduce.input.buffer.percent</name>
+      <defaultValue>0.0</defaultValue>
+      <description>The percentage of memory- relative to the maximum heap size- to retain map outputs during the reduce.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.reduce.shuffle.memory.limit.percent</name>
+      <defaultValue>0.25</defaultValue>
+      <description>Expert: Maximum percentage of the in-memory limit that a single shuffle can consume</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.shuffle.ssl.enabled</name>
+      <defaultValue>false</defaultValue>
+      <description>Whether to use SSL for for the Shuffle HTTP endpoints.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.shuffle.ssl.file.buffer.size</name>
+      <defaultValue>65536</defaultValue>
+      <description>Buffer size for reading spills from file when using SSL.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.shuffle.max.connections</name>
+      <defaultValue>0</defaultValue>
+      <description>Max allowed connections for the shuffle.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.reduce.markreset.buffer.percent</name>
+      <defaultValue>0.0</defaultValue>
+      <description>The percentage of memory -relative to the maximum heap size- to be used for caching values</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.map.speculative</name>
+      <defaultValue>true</defaultValue>
+      <description>If true, then multiple instances of some map tasks may be executed in parallel.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.reduce.speculative</name>
+      <defaultValue>true</defaultValue>
+      <description>If true, then multiple instances of some reduce tasks may be executed in parallel.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.speculative.speculativecap</name>
+      <defaultValue>0.1</defaultValue>
+      <description>The max percent (0-1) of running tasks that can be speculatively re-executed at any time.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.map.output.collector.class</name>
+      <defaultValue>org.apache.hadoop.mapred.MapTask$MapOutputBuffer</defaultValue>
+      <description>It defines the MapOutputCollector implementation to use.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.speculative.slowtaskthreshold</name>
+      <defaultValue>1.0</defaultValue>The number of standard deviations
+      <description></description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.speculative.slownodethreshold</name>
+      <defaultValue>1.0</defaultValue>
+      <description>The number of standard deviations</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.jvm.numtasks</name>
+      <defaultValue>1</defaultValue>
+      <description>How many tasks to run per jvm. If set to -1, there is no limit.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.ubertask.enable</name>
+      <defaultValue>false</defaultValue>
+      <description>Whether to enable the small-jobs "ubertask" optimization, which runs "sufficiently small" jobs sequentially within a single JVM. "Small" is defined by the following maxmaps, maxreduces, and maxbytes settings.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.ubertask.maxmaps</name>
+      <defaultValue>9</defaultValue>
+      <description>Threshold for number of maps, beyond which job is considered too big for the ubertasking optimization.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.ubertask.maxreduces</name>
+      <defaultValue>1</defaultValue>
+      <description>Threshold for number of reduces, beyond which job is considered too big for the ubertasking optimization.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.ubertask.maxbytes</name>
+      <defaultValue/>
+      <description>Threshold for number of input bytes, beyond which job is considered too big for the ubertasking optimization.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.input.fileinputformat.split.minsize</name>
+      <defaultValue>0</defaultValue>
+      <description>The minimum size chunk that map input should be split into.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.maxtasks.perjob</name>
+      <defaultValue>-1</defaultValue>
+      <description>The maximum number of tasks for a single job.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.client.submit.file.replication</name>
+      <defaultValue>10</defaultValue>
+      <description>The replication level for submitted job files.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.tasktracker.dns.interface</name>
+      <defaultValue>default</defaultValue>
+      <description>The name of the Network Interface from which a task tracker should report its IP address.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.tasktracker.dns.nameserver</name>
+      <defaultValue>default</defaultValue>
+      <description>The host name or IP address of the name server (DNS)</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.tasktracker.http.threads</name>
+      <defaultValue>40</defaultValue>
+      <description>The number of worker threads that for the http server. This is used for map output fetching</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.tasktracker.http.address</name>
+      <defaultValue>0.0.0.0:50060</defaultValue>
+      <description>The task tracker http server address and port.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.task.files.preserve.failedtasks</name>
+      <defaultValue>false</defaultValue>
+      <description>Should the files for failed tasks be kept.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <!--
+  <property>
+  <name>mapreduce.task.files.preserve.filepattern</name>
+  <defaultValue>.*_m_123456_0</defaultValue>
+  <description>Keep all files from tasks whose task names match the given
+               regular expression. Defaults to none.</description>
+  </property>
+-->
+   <property>
+      <name>mapreduce.output.fileoutputformat.compress</name>
+      <defaultValue>false</defaultValue>
+      <description>Should the job outputs be compressed?</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.output.fileoutputformat.compress.type</name>
+      <defaultValue>RECORD</defaultValue>
+      <description>If the job outputs are to compressed as SequenceFiles, how should they be compressed? Should be one of NONE, RECORD or BLOCK.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.output.fileoutputformat.compress.codec</name>
+      <defaultValue>org.apache.hadoop.io.compress.DefaultCodec</defaultValue>
+      <description>If the job outputs are compressed, how should they be compressed?</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.map.output.compress</name>
+      <defaultValue>false</defaultValue>
+      <description>Should the outputs of the maps be compressed before being sent across the network. Uses SequenceFile compression.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.map.output.compress.codec</name>
+      <defaultValue>org.apache.hadoop.io.compress.DefaultCodec</defaultValue>
+      <description>If the map outputs are compressed, how should they be compressed?</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>map.sort.class</name>
+      <defaultValue>org.apache.hadoop.util.QuickSort</defaultValue>
+      <description>The default sort class for sorting keys.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.task.userlog.limit.kb</name>
+      <defaultValue>0</defaultValue>
+      <description>The maximum size of user-logs of each task in KB. 0 disables the cap.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.userlog.retain.hours</name>
+      <defaultValue>24</defaultValue>
+      <description>The maximum time, in hours, for which the user-logs are to be retained after the job completion.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.hosts.filename</name>
+      <defaultValue/>
+      <description>Names a file that contains the list of nodes that may connect to the jobtracker. If the value is empty, all hosts are permitted.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.hosts.exclude.filename</name>
+      <defaultValue/>
+      <description>Names a file that contains the list of hosts that should be excluded by the jobtracker.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.heartbeats.in.second</name>
+      <defaultValue>100</defaultValue>
+      <description>Expert: Approximate number of heart-beats that could arrive at JobTracker in a second.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.tasktracker.maxblacklists</name>
+      <defaultValue>4</defaultValue>
+      <description>The tracker will become a healthy tracker after a restart.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.maxtaskfailures.per.tracker</name>
+      <defaultValue>3</defaultValue>
+      <description>The number of task-failures on a tasktracker of a given job after which new tasks of that job aren't assigned to it.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.client.output.filter</name>
+      <defaultValue>FAILED</defaultValue>
+      <description>The filter for controlling the output of the task's userlogs sent to the console of the JobClient.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.client.completion.pollinterval</name>
+      <defaultValue>5000</defaultValue>
+      <description>The interval (in milliseconds) between which the JobClient polls the JobTracker for updates about job status.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.client.progressmonitor.pollinterval</name>
+      <defaultValue>1000</defaultValue>
+      <description>The interval (in milliseconds) between which the JobClient reports status to the console and checks for job completion.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.persist.jobstatus.active</name>
+      <defaultValue>true</defaultValue>
+      <description>Indicates if persistency of job status information is active or not.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.persist.jobstatus.hours</name>
+      <defaultValue>1</defaultValue>
+      <description>The number of hours job status information is persisted in DFS.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobtracker.persist.jobstatus.dir</name>
+      <defaultValue>/jobtracker/jobsInfo</defaultValue>
+      <description>The directory where the job status information is persisted in a file system to be available after it drops of the memory queue and between jobtracker restarts.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.task.profile</name>
+      <defaultValue>false</defaultValue>
+      <description>The information is stored in the user log directory. The value is "true" if task profiling is enabled.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.task.profile.maps</name>
+      <defaultValue>0-2</defaultValue>
+      <description>To set the ranges of map tasks to profile.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.task.profile.reduces</name>
+      <defaultValue>0-2</defaultValue>
+      <description>To set the ranges of reduce tasks to profile.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.task.skip.start.attempts</name>
+      <defaultValue>2</defaultValue>
+      <description>The number of Task attempts AFTER</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.map.skip.proc.count.autoincr</name>
+      <defaultValue>true</defaultValue>
+      <description>The flag which if set to true, SkipBadRecords.COUNTER_MAP_PROCESSED_RECORDS is incremented by MapRunner after invoking the map function.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.reduce.skip.proc.count.autoincr</name>
+      <defaultValue>true</defaultValue>
+      <description>The flag which if set to true, SkipBadRecords.COUNTER_REDUCE_PROCESSED_GROUPS is incremented by framework after invoking the reduce function.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.skip.outdir</name>
+      <defaultValue/>
+      <description>If no value is specified here, the skipped records are written to the output directory at _logs/skip.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.map.skip.maxrecords</name>
+      <defaultValue>0</defaultValue>
+      <description>The number of acceptable skip records surrounding the bad record PER bad record in mapper.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.reduce.skip.maxgroups</name>
+      <defaultValue>0</defaultValue>
+      <description>The number of acceptable skip groups surrounding the bad group PER bad group in reducer.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.ifile.readahead</name>
+      <defaultValue>true</defaultValue>
+      <description>Configuration key to enable/disable IFile readahead.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.ifile.readahead.bytes</name>
+      <defaultValue>4194304</defaultValue>
+      <description>Configuration key to set the IFile readahead length in bytes.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <!-- Proxy Configuration -->
+   <property>
+      <name>mapreduce.jobtracker.taskcache.levels</name>
+      <defaultValue>2</defaultValue>
+      <description>This is the max level of the task cache.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.queuename</name>
+      <defaultValue>default</defaultValue>
+      <description>Queue to which a job is submitted.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.cluster.acls.enabled</name>
+      <defaultValue>false</defaultValue>
+      <description>Specifies whether ACLs should be checked for authorization of users for doing various queue and job level operations.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.acl-modify-job</name>
+      <defaultValue></defaultValue>
+      <description>Job specific access-control list for 'modifying' the job.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.acl-view-job</name>
+      <defaultValue></defaultValue>
+      <description>Job specific access-control list for 'viewing' the job.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.tasktracker.indexcache.mb</name>
+      <defaultValue>10</defaultValue>
+      <description>The maximum memory that a task tracker allows for the index cache that is used when serving map outputs to reducers.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.token.tracking.ids.enabled</name>
+      <defaultValue>false</defaultValue>
+      <description>Whether to write tracking ids of tokens to job-conf.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.token.tracking.ids</name>
+      <defaultValue/>
+      <description>When mapreduce.job.token.tracking.ids.enabled is set to true, this is set by the framework to the token-tracking-ids used by the job.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.task.merge.progress.records</name>
+      <defaultValue>10000</defaultValue>
+      <description>The number of records to process during merge before sending a progress notification to the TaskTracker.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.reduce.slowstart.completedmaps</name>
+      <defaultValue>0.05</defaultValue>
+      <description>Fraction of the number of maps in the job which should be complete before reduces are scheduled for the job.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.complete.cancel.delegation.tokens</name>
+      <defaultValue>true</defaultValue>
+      <description>if false - do not unregister/cancel delegation tokens from renewal, because same tokens may be used by spawned jobs</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.tasktracker.taskcontroller</name>
+      <defaultValue>org.apache.hadoop.mapred.DefaultTaskController</defaultValue>
+      <description>TaskController which is used to launch and manage task execution</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.tasktracker.group</name>
+      <defaultValue/>
+      <description>Expert: Group to which TaskTracker belongs.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.shuffle.port</name>
+      <defaultValue>13562</defaultValue>
+      <description>Default port that the ShuffleHandler will run on.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.reduce.shuffle.consumer.plugin.class</name>
+      <defaultValue>org.apache.hadoop.mapreduce.task.reduce.Shuffle</defaultValue>
+      <description>Name of the class whose instance will be used to send shuffle requests by reducetasks of this job.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <!--  Node health script variables -->
+   <property>
+      <name>mapreduce.tasktracker.healthchecker.script.path</name>
+      <defaultValue/>
+      <description>Absolute path to the script which is periodicallyrun by the node health monitoring service to determine if the node is healthy or not.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.tasktracker.healthchecker.interval</name>
+      <defaultValue>60000</defaultValue>
+      <description>Frequency of the node health script to be run, in milliseconds</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.tasktracker.healthchecker.script.timeout</name>
+      <defaultValue>600000</defaultValue>
+      <description>Time after node health script should be killed if unresponsive and considered that the script has failed.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.tasktracker.healthchecker.script.args</name>
+      <defaultValue/>
+      <description>List of arguments which are to be passed to node health script when it is being launched comma seperated.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <!--  end of node health script variables -->
+   <!-- MR YARN Application properties -->
+   <property>
+      <name>mapreduce.job.counters.limit</name>
+      <defaultValue>120</defaultValue>
+      <description>Limit on the number of user counters allowed per job.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.framework.name</name>
+      <defaultValue>local</defaultValue>
+      <description>The runtime framework for executing MapReduce jobs. Can be one of local, classic or yarn.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>yarn.app.mapreduce.am.staging-dir</name>
+      <defaultValue>/tmp/hadoop-yarn/staging</defaultValue>
+      <description>The staging dir used while submitting jobs.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.am.max-attempts</name>
+      <defaultValue>2</defaultValue>
+      <description>The maximum number of application attempts.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <!-- Job Notification Configuration -->
+   <property>
+      <name>mapreduce.job.end-notification.url</name>
+      <defaultValue/>
+      <description>Indicates url which will be called on completion of job to inform end status of job.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.end-notification.retry.attempts</name>
+      <defaultValue>0</defaultValue>
+      <description>The number of times the submitter of the job wants to retry job end notification if it fails.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.end-notification.retry.interval</name>
+      <defaultValue>1000</defaultValue>
+      <description>The number of milliseconds the submitter of the job wants to wait before job end notification is retried if it fails.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.end-notification.max.attempts</name>
+      <defaultValue>5</defaultValue>
+      <final>true</final>
+      <description>The maximum number of times a URL will be read for providing job end notification.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.end-notification.max.retry.interval</name>
+      <defaultValue>5000</defaultValue>
+      <final>true</final>
+      <description>The maximum amount of time (in milliseconds) to wait before retrying job end notification.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>yarn.app.mapreduce.am.env</name>
+      <defaultValue/>
+      <description>User added environment variables for the MR App Master processes.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>yarn.app.mapreduce.am.admin.user.env</name>
+      <defaultValue/>
+      <description>Environment variables for the MR App Master processes for admin purposes.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>yarn.app.mapreduce.am.command-opts</name>
+      <defaultValue>-Xmx1024m</defaultValue>
+      <description>Java opts for the MR App Master processes.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>yarn.app.mapreduce.am.admin-command-opts</name>
+      <defaultValue/>
+      <description>Java opts for the MR App Master processes for admin purposes.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>yarn.app.mapreduce.am.job.task.listener.thread-count</name>
+      <defaultValue>30</defaultValue>
+      <description>The number of threads used to handle RPC calls in the MR AppMaster from remote tasks</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>yarn.app.mapreduce.am.job.client.port-range</name>
+      <defaultValue/>
+      <description>Range of ports that the MapReduce AM can use when binding. Leave blank if you want all possible ports.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>yarn.app.mapreduce.am.job.committer.cancel-timeout</name>
+      <defaultValue>60000</defaultValue>
+      <description>The amount of time in milliseconds to wait for the output committer to cancel an operation if the job is killed</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>yarn.app.mapreduce.am.job.committer.commit-window</name>
+      <defaultValue>10000</defaultValue>
+      <description>Defines a time window in milliseconds for output commit operations.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>yarn.app.mapreduce.am.scheduler.heartbeat.interval-ms</name>
+      <defaultValue>1000</defaultValue>
+      <description>The interval in ms at which the MR AppMaster should send heartbeats to the ResourceManager</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>yarn.app.mapreduce.client-am.ipc.max-retries</name>
+      <defaultValue>3</defaultValue>
+      <description>The number of client retries to the AM - before reconnecting to the RM to fetch Application Status.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>yarn.app.mapreduce.client.max-retries</name>
+      <defaultValue>3</defaultValue>
+      <description>The number of client retries to the RM/HS before throwing exception. This is a layer above the ipc.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>yarn.app.mapreduce.am.resource.mb</name>
+      <defaultValue>1536</defaultValue>
+      <description>The amount of memory the MR AppMaster needs.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>yarn.app.mapreduce.am.resource.cpu-vcores</name>
+      <defaultValue>1</defaultValue>
+      <description>The number of virtual CPU cores the MR AppMaster needs.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <description>CLASSPATH for MR applications.</description>
+      <name>mapreduce.application.classpath</name>
+      <defaultValue/>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.classloader</name>
+      <defaultValue>false</defaultValue>
+      <description>Whether to use a separate (isolated) classloader for user classes in the task JVM.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.job.classloader.system.classes</name>
+      <defaultValue>java.,javax.,org.apache.commons.logging.,org.apache.log4j.,org.apache.hadoop.</defaultValue>
+      <description>A comma-separated list of classes that should be loaded from the system classpath</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <!-- jobhistory properties -->
+   <property>
+      <name>mapreduce.jobhistory.address</name>
+      <defaultValue>0.0.0.0:10020</defaultValue>
+      <description>MapReduce JobHistory Server IPC host:port</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobhistory.webapp.address</name>
+      <defaultValue>0.0.0.0:19888</defaultValue>
+      <description>MapReduce JobHistory Server Web UI host:port</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobhistory.keytab</name>
+      <description>Location of the kerberos keytab file for the MapReduce JobHistory Server.</description>
+      <defaultValue>/etc/security/keytab/jhs.service.keytab</defaultValue>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobhistory.principal</name>
+      <description>Kerberos principal name for the MapReduce JobHistory Server.</description>
+      <defaultValue>jhs/_HOST@REALM.TLD</defaultValue>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobhistory.intermediate-done-dir</name>
+      <defaultValue>${yarn.app.mapreduce.am.staging-dir}/history/done_intermediate</defaultValue>
+      <description/>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobhistory.done-dir</name>
+      <defaultValue>${yarn.app.mapreduce.am.staging-dir}/history/done</defaultValue>
+      <description/>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobhistory.cleaner.enable</name>
+      <defaultValue>true</defaultValue>
+      <description/>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobhistory.cleaner.interval-ms</name>
+      <defaultValue>86400000</defaultValue>
+      <description>How often the job history cleaner checks for files to delete, in milliseconds. Defaults to 86400000 (one day). Files are only deleted if they are older than mapreduce.jobhistory.max-age-ms.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobhistory.max-age-ms</name>
+      <defaultValue>604800000</defaultValue>
+      <description>Job history files older than this many milliseconds will be deleted when the history cleaner runs. Defaults to 604800000 (1 week).</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobhistory.client.thread-count</name>
+      <defaultValue>10</defaultValue>
+      <description>The number of threads to handle client API requests</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobhistory.datestring.cache.size</name>
+      <defaultValue>200000</defaultValue>
+      <description>Size of the date string cache. Effects the number of directories which will be scanned to find a job.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobhistory.joblist.cache.size</name>
+      <defaultValue>20000</defaultValue>
+      <description>Size of the job list cache</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobhistory.loadedjobs.cache.size</name>
+      <defaultValue>5</defaultValue>
+      <description>Size of the loaded job cache</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobhistory.move.interval-ms</name>
+      <defaultValue>180000</defaultValue>
+      <description>Scan for history files to more from intermediate done dir to done dir at this frequency.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobhistory.move.thread-count</name>
+      <defaultValue>3</defaultValue>
+      <description>The number of threads used to move files.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobhistory.store.class</name>
+      <defaultValue/>
+      <description>The HistoryStorage class to use to cache history data.</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobhistory.minicluster.fixed.ports</name>
+      <defaultValue>false</defaultValue>
+      <description>Whether to use fixed ports with the minicluster</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+   <property>
+      <name>mapreduce.jobhistory.http.policy</name>
+      <defaultValue>HTTP_ONLY</defaultValue>
+      <description>This configures the HTTP endpoint for JobHistoryServer web UI. The following values are supported: - HTTP_ONLY : Service is provided only on http - HTTPS_ONLY : Service is provided only on https</description>
+      <source>mapred-site.xml</source>
+      <type>高级</type>
+      <value></value>
+   </property>
+</configuration>

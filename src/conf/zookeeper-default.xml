@@ -1,0 +1,53 @@
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration> 
+   <property> 
+      <name>dataDir</name>  
+      <defaultValue>/tmp/zookeeper</defaultValue>  
+      <description>the directory where the snapshot is stored.do not use /tmp for storage, /tmp here is just example sakes.</description>  
+      <type>基础</type>  
+      <source>zoo.cfg</source> 
+   </property>  
+   <property> 
+      <name>tickTime</name>  
+      <defaultValue>2000</defaultValue>  
+      <description>The number of milliseconds of each tick</description>  
+      <type>高级</type>  
+      <source>zoo.cfg</source> 
+   </property>  
+   <property> 
+      <name>initLimit</name>  
+      <defaultValue>10</defaultValue>  
+      <description>The number of ticks that the initial synchronization phase can take</description>  
+      <type>高级</type>  
+      <source>zoo.cfg</source> 
+   </property>  
+   <property> 
+      <name>syncLimit</name>  
+      <defaultValue>5</defaultValue>  
+      <description>The number of ticks that can pass between sending a request and getting an acknowledgement</description>  
+      <type>高级</type>  
+      <source>zoo.cfg</source> 
+   </property>  
+   <property> 
+      <name>clientPort</name>  
+      <defaultValue>2181</defaultValue>  
+      <description>the port at which the clients will connect</description>  
+      <type>高级</type>  
+      <source>zoo.cfg</source> 
+   </property>  
+   <property> 
+      <name>autopurge.snapRetainCount</name>  
+      <defaultValue>3</defaultValue>  
+      <description>The number of snapshots to retain in dataDir</description>  
+      <type>高级</type>  
+      <source>zoo.cfg</source> 
+   </property>  
+   <property> 
+      <name>autopurge.purgeInterval</name>  
+      <defaultValue>1</defaultValue>  
+      <description>Purge task interval in hours Set to "0" to disable auto purge feature</description>  
+      <type>高级</type>  
+      <source>zoo.cfg</source> 
+   </property> 
+</configuration>

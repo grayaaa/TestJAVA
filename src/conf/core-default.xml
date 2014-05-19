@@ -1,0 +1,957 @@
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<!-- Do not modify this file directly.  Instead, copy entries that you -->
+<!-- wish to modify from this file into core-site.xml and change them -->
+<!-- there.  If core-site.xml does not already exist, create it.      -->
+<configuration> 
+   <!--- global properties -->  
+   <property> 
+      <name>hadoop.tmp.dir</name>  
+      <defaultValue>/dfs/tmp</defaultValue>  
+      <description>A base for other temporary directories.</description>  
+      <source>core-site.xml</source>  
+      <type>基础</type> 
+   </property>  
+   <property> 
+      <name>fs.default.name</name>  
+      <defaultValue>file:///</defaultValue>  
+      <description>Deprecated. Use (fs.defaultFS) property instead</description>  
+      <source>core-site.xml</source>  
+      <type>基础</type> 
+   </property>  
+   <property> 
+      <name>fs.trash.interval</name>  
+      <defaultValue>0</defaultValue>  
+      <description>Number of minutes after which the checkpoint gets deleted.</description>  
+      <source>core-site.xml</source>  
+      <type>基础</type> 
+   </property>  
+   <property> 
+      <name>fs.trash.checkpoint.interval</name>  
+      <defaultValue>0</defaultValue>  
+      <description>Number of minutes between trash checkpoints.</description>  
+      <source>core-site.xml</source>  
+      <type>基础</type> 
+   </property>  
+   <property> 
+      <name>kfs.replication</name>  
+      <defaultValue>3</defaultValue>  
+      <description>Replication factor</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.common.configuration.version</name>  
+      <defaultValue>0.23.0</defaultValue>  
+      <description>version of this configuration file</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>io.native.lib.available</name>  
+      <defaultValue>true</defaultValue>  
+      <description>Should native hadoop libraries, if present, be used.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.http.filter.initializers</name>  
+      <defaultValue>org.apache.hadoop.http.lib.StaticUserWebFilter</defaultValue>  
+      <description>A comma separated list of class names.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!--- security properties -->  
+   <property> 
+      <name>hadoop.security.authorization</name>  
+      <defaultValue>false</defaultValue>  
+      <description>Is service-level authorization enabled?</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.security.instrumentation.requires.admin</name>  
+      <defaultValue>false</defaultValue>  
+      <description>Indicates if administrator ACLs are required to access instrumentation servlets (JMX, METRICS, CONF, STACKS).</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.security.authentication</name>  
+      <defaultValue>simple</defaultValue>  
+      <description>Possible defaultValues are simple (no authentication), and kerberos</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.security.group.mapping</name>  
+      <defaultValue>org.apache.hadoop.security.JniBasedUnixGroupsMappingWithFallback</defaultValue>  
+      <description>Class for user to group mapping (get groups for a given user) for ACL.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.security.groups.cache.secs</name>  
+      <defaultValue>300</defaultValue>  
+      <description>This is the config controlling the validity of the entries in the cache containing the user->group mapping.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.security.group.mapping.ldap.url</name>  
+      <defaultValue/>  
+      <description>The URL of the LDAP server to use for resolving user groups when using the LdapGroupsMapping user to group mapping.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.security.group.mapping.ldap.ssl</name>  
+      <defaultValue>false</defaultValue>  
+      <description>Whether or not to use SSL when connecting to the LDAP server.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.security.group.mapping.ldap.ssl.keystore</name>  
+      <defaultValue/>  
+      <description>File path to the SSL keystore that contains the SSL certificate required by the LDAP server.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.security.group.mapping.ldap.ssl.keystore.password.file</name>  
+      <defaultValue/>  
+      <description>The path to a file containing the password of the LDAP SSL keystore.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.security.group.mapping.ldap.bind.user</name>  
+      <defaultValue/>  
+      <description>The distinguished name of the user to bind as when connecting to the LDAP server.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.security.group.mapping.ldap.bind.password.file</name>  
+      <defaultValue/>  
+      <description>The path to a file containing the password of the bind user.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.security.group.mapping.ldap.base</name>  
+      <defaultValue/>  
+      <description>The search base for the LDAP connection. This is a distinguished name, and will typically be the root of the LDAP directory.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.security.group.mapping.ldap.search.filter.user</name>  
+      <defaultValue>( (objectClass=user)(sAMAccountName={0}))</defaultValue>  
+      <description>An additional filter to use when searching for LDAP users.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.security.group.mapping.ldap.search.filter.group</name>  
+      <defaultValue>(objectClass=group)</defaultValue>  
+      <description>An additional filter to use when searching for LDAP groups.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.security.group.mapping.ldap.search.attr.member</name>  
+      <defaultValue>member</defaultValue>  
+      <description>The attribute of the group object that identifies the users that are members of the group.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.security.group.mapping.ldap.search.attr.group.name</name>  
+      <defaultValue>cn</defaultValue>  
+      <description>The attribute of the group object that identifies the group name.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.security.service.user.name.key</name>  
+      <defaultValue/>  
+      <description>this configuration is required for specifying the principal name to use for the service when the client wishes to make an RPC call.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.security.uid.cache.secs</name>  
+      <defaultValue>14400</defaultValue>  
+      <description/>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.rpc.protection</name>  
+      <defaultValue>authentication</defaultValue>  
+      <description>This field sets the quality of protection for secured sasl connections.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.work.around.non.threadsafe.getpwuid</name>  
+      <defaultValue>false</defaultValue>  
+      <description>Some operating systems are known to have broken implementations of getpwuid_r and getpwgid_r.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.kerberos.kinit.command</name>  
+      <defaultValue>kinit</defaultValue>  
+      <description>Used to periodically renew Kerberos credentials when provided to Hadoop.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.security.auth_to_local</name>  
+      <defaultValue/>  
+      <description>Maps kerberos principals to local user names</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!-- i/o properties -->  
+   <property> 
+      <name>io.file.buffer.size</name>  
+      <defaultValue>4096</defaultValue>  
+      <description>The size of buffer for use in sequence files.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>io.bytes.per.checksum</name>  
+      <defaultValue>512</defaultValue>  
+      <description>The number of bytes per checksum. Must not be larger than io.file.buffer.size.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>io.skip.checksum.errors</name>  
+      <defaultValue>false</defaultValue>  
+      <description>If true, when a checksum error is encountered while reading a sequence file, entries are skipped.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>io.compression.codecs</name>  
+      <defaultValue/>  
+      <description>A comma-separated list of the compression codec classes that can be used for compression/decompression.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>io.serializations</name>  
+      <defaultValue>org.apache.hadoop.io.serializer.WritableSerialization,org.apache.hadoop.io.serializer.avro.AvroSpecificSerialization,org.apache.hadoop.io.serializer.avro.AvroReflectSerialization</defaultValue>  
+      <description>A list of serialization classes that can be used for obtaining serializers and deserializers.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>io.seqfile.local.dir</name>  
+      <defaultValue>${hadoop.tmp.dir}/io/local</defaultValue>  
+      <description>The local directory where sequence file stores intermediate data files during merge.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>io.map.index.skip</name>  
+      <defaultValue>0</defaultValue>  
+      <description>Number of index entries to skip between each entry. Zero by default.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>io.map.index.interval</name>  
+      <defaultValue>128</defaultValue>  
+      <description>MapFile consist of two files - data file (tuples) and index file (keys).</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!-- file system properties -->  
+   <property> 
+      <name>fs.defaultFS</name>  
+      <defaultValue>file:///</defaultValue>  
+      <description>The name of the default file system.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>fs.AbstractFileSystem.file.impl</name>  
+      <defaultValue>org.apache.hadoop.fs.local.LocalFs</defaultValue>  
+      <description>The AbstractFileSystem for file: uris.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>fs.AbstractFileSystem.hdfs.impl</name>  
+      <defaultValue>org.apache.hadoop.fs.Hdfs</defaultValue>  
+      <description>The FileSystem for hdfs: uris.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>fs.AbstractFileSystem.viewfs.impl</name>  
+      <defaultValue>org.apache.hadoop.fs.viewfs.ViewFs</defaultValue>  
+      <description>The AbstractFileSystem for view file system for viewfs: uris (ie client side mount table:).</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>fs.ftp.host</name>  
+      <defaultValue>0.0.0.0</defaultValue>  
+      <description>FTP filesystem connects to this server</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>fs.ftp.host.port</name>  
+      <defaultValue>21</defaultValue>  
+      <description>FTP filesystem connects to fs.ftp.host on this port</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>fs.df.interval</name>  
+      <defaultValue>60000</defaultValue>  
+      <description>Disk usage statistics refresh interval in msec.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>fs.s3.block.size</name>  
+      <defaultValue>67108864</defaultValue>  
+      <description>Block size to use when writing files to S3.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>fs.s3.buffer.dir</name>  
+      <defaultValue>${hadoop.tmp.dir}/s3</defaultValue>  
+      <description>Determines where on the local filesystem the S3 filesystem should store files before sending them to S3</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>fs.s3.maxRetries</name>  
+      <defaultValue>4</defaultValue>  
+      <description>The maximum number of retries for reading or writing files to S3, before we signal failure to the application.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>fs.s3.sleepTimeSeconds</name>  
+      <defaultValue>10</defaultValue>  
+      <description>The number of seconds to sleep between each S3 retry.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>fs.automatic.close</name>  
+      <defaultValue>true</defaultValue>  
+      <description>By default, FileSystem instances are automatically closed at program exit using a JVM shutdown hook.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>fs.s3n.block.size</name>  
+      <defaultValue>67108864</defaultValue>  
+      <description>Block size to use when reading files using the native S3 filesystem (s3n: URIs).</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>io.seqfile.compress.blocksize</name>  
+      <defaultValue>1000000</defaultValue>  
+      <description>The minimum block size for compression in block compressed SequenceFiles.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>io.seqfile.lazydecompress</name>  
+      <defaultValue>true</defaultValue>  
+      <description>Should defaultValues of block-compressed SequenceFiles be decompressed only when necessary.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>io.seqfile.sorter.recordlimit</name>  
+      <defaultValue>1000000</defaultValue>  
+      <description>The limit on number of records to be kept in memory in a spill in SequenceFiles.Sorter</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>io.mapfile.bloom.size</name>  
+      <defaultValue>1048576</defaultValue>  
+      <description>The size of BloomFilter-s used in BloomMapFile.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>io.mapfile.bloom.error.rate</name>  
+      <defaultValue>0.005</defaultValue>  
+      <description>The rate of false positives in BloomFilter-s used in BloomMapFile.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.util.hash.type</name>  
+      <defaultValue>murmur</defaultValue>  
+      <description>The default implementation of Hash.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!-- ipc properties -->  
+   <property> 
+      <name>ipc.client.idlethreshold</name>  
+      <defaultValue>4000</defaultValue>  
+      <description>Defines the threshold number of connections after which connections will be inspected for idleness.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ipc.client.kill.max</name>  
+      <defaultValue>10</defaultValue>  
+      <description>Defines the maximum number of clients to disconnect in one go.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ipc.client.connection.maxidletime</name>  
+      <defaultValue>10000</defaultValue>  
+      <description>The maximum time in msec after which a client will bring down the connection to the server.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ipc.client.connect.max.retries</name>  
+      <defaultValue>10</defaultValue>  
+      <description>Indicates the number of retries a client will make to establish a server connection.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ipc.client.connect.max.retries.on.timeouts</name>  
+      <defaultValue>45</defaultValue>  
+      <description>Indicates the number of retries a client will make on socket timeout to establish a server connection.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ipc.server.listen.queue.size</name>  
+      <defaultValue>128</defaultValue>  
+      <description>Indicates the length of the listen queue for servers accepting client connections.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ipc.server.tcpnodelay</name>  
+      <defaultValue>false</defaultValue>  
+      <description>Turn on/off Nagle's algorithm for the TCP socket connection on the server.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ipc.client.tcpnodelay</name>  
+      <defaultValue>false</defaultValue>  
+      <description>Turn on/off Nagle's algorithm for the TCP socket connection on the client.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!-- Proxy Configuration -->  
+   <property> 
+      <name>hadoop.rpc.socket.factory.class.default</name>  
+      <defaultValue>org.apache.hadoop.net.StandardSocketFactory</defaultValue>  
+      <description>This parameter is expected to be formatted as "package.FactoryClassName".</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.rpc.socket.factory.class.ClientProtocol</name>  
+      <defaultValue/>  
+      <description>If null or empty, use hadoop.rpc.socket.class.default.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.socks.server</name>  
+      <defaultValue/>  
+      <description>Address (host:port) of the SOCKS server to be used by the SocksSocketFactory.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!-- Rack Configuration -->  
+   <property> 
+      <name>net.topology.node.switch.mapping.impl</name>  
+      <defaultValue>org.apache.hadoop.net.ScriptBasedMapping</defaultValue>  
+      <description>The default implementation of the DNSToSwitchMapping.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>net.topology.script.file.name</name>  
+      <defaultValue/>  
+      <description>The script name that should be invoked to resolve DNS names to NetworkTopology names.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>net.topology.script.number.args</name>  
+      <defaultValue>100</defaultValue>  
+      <description>The max number of args that the script configured with net.topology.script.file.name should be run with.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>net.topology.table.file.name</name>  
+      <defaultValue/>  
+      <description>The file name for a topology file, which is used when the net.topology.script.file.name property is set to org.apache.hadoop.net.TableMapping.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!-- Local file system -->  
+   <property> 
+      <name>file.stream-buffer-size</name>  
+      <defaultValue>4096</defaultValue>  
+      <description>The size of buffer to stream files.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>file.bytes-per-checksum</name>  
+      <defaultValue>512</defaultValue>  
+      <description>The number of bytes per checksum. Must not be larger than file.stream-buffer-size</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>file.client-write-packet-size</name>  
+      <defaultValue>65536</defaultValue>  
+      <description>Packet size for clients to write</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>file.blocksize</name>  
+      <defaultValue>67108864</defaultValue>  
+      <description>Block size</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>file.replication</name>  
+      <defaultValue>1</defaultValue>  
+      <description>Replication factor</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!-- s3 File System -->  
+   <property> 
+      <name>s3.stream-buffer-size</name>  
+      <defaultValue>4096</defaultValue>  
+      <description>The size of buffer to stream files.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>s3.bytes-per-checksum</name>  
+      <defaultValue>512</defaultValue>  
+      <description>The number of bytes per checksum. Must not be larger than s3.stream-buffer-size</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>s3.client-write-packet-size</name>  
+      <defaultValue>65536</defaultValue>  
+      <description>Packet size for clients to write</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>s3.blocksize</name>  
+      <defaultValue>67108864</defaultValue>  
+      <description>Block size</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>s3.replication</name>  
+      <defaultValue>3</defaultValue>  
+      <description>Replication factor</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!-- s3native File System -->  
+   <property> 
+      <name>s3native.stream-buffer-size</name>  
+      <defaultValue>4096</defaultValue>  
+      <description>The size of buffer to stream files.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>s3native.bytes-per-checksum</name>  
+      <defaultValue>512</defaultValue>  
+      <description>The number of bytes per checksum. Must not be larger than s3native.stream-buffer-size</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>s3native.client-write-packet-size</name>  
+      <defaultValue>65536</defaultValue>  
+      <description>Packet size for clients to write</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>s3native.blocksize</name>  
+      <defaultValue>67108864</defaultValue>  
+      <description>Block size</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>s3native.replication</name>  
+      <defaultValue>3</defaultValue>  
+      <description>Replication factor</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!-- Kosmos File System -->  
+   <property> 
+      <name>kfs.stream-buffer-size</name>  
+      <defaultValue>4096</defaultValue>  
+      <description>The size of buffer to stream files.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>kfs.bytes-per-checksum</name>  
+      <defaultValue>512</defaultValue>  
+      <description>The number of bytes per checksum. Must not be larger than kfs.stream-buffer-size</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>kfs.client-write-packet-size</name>  
+      <defaultValue>65536</defaultValue>  
+      <description>Packet size for clients to write</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>kfs.blocksize</name>  
+      <defaultValue>67108864</defaultValue>  
+      <description>Block size</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!-- FTP file system -->  
+   <property> 
+      <name>ftp.stream-buffer-size</name>  
+      <defaultValue>4096</defaultValue>  
+      <description>The size of buffer to stream files.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ftp.bytes-per-checksum</name>  
+      <defaultValue>512</defaultValue>  
+      <description>The number of bytes per checksum. Must not be larger than ftp.stream-buffer-size</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ftp.client-write-packet-size</name>  
+      <defaultValue>65536</defaultValue>  
+      <description>Packet size for clients to write</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ftp.blocksize</name>  
+      <defaultValue>67108864</defaultValue>  
+      <description>Block size</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ftp.replication</name>  
+      <defaultValue>3</defaultValue>  
+      <description>Replication factor</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!-- Tfile -->  
+   <property> 
+      <name>tfile.io.chunk.size</name>  
+      <defaultValue>1048576</defaultValue>  
+      <description>defaultValue chunk size in bytes. Default to 1MB.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>tfile.fs.output.buffer.size</name>  
+      <defaultValue>262144</defaultValue>  
+      <description>Buffer size used for FSDataOutputStream in bytes.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>tfile.fs.input.buffer.size</name>  
+      <defaultValue>262144</defaultValue>  
+      <description>Buffer size used for FSDataInputStream in bytes.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!-- HTTP web-consoles Authentication -->  
+   <property> 
+      <name>hadoop.http.authentication.type</name>  
+      <defaultValue>simple</defaultValue>  
+      <description>Defines authentication used for Oozie HTTP endpoint.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.http.authentication.token.validity</name>  
+      <defaultValue>36000</defaultValue>  
+      <description>Indicates how long (in seconds) an authentication token is valid before it has to be renewed.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.http.authentication.signature.secret.file</name>  
+      <defaultValue>${user.home}/hadoop-http-auth-signature-secret</defaultValue>  
+      <description>The signature secret for signing the authentication tokens.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.http.authentication.cookie.domain</name>  
+      <defaultValue/>  
+      <description>The domain to use for the HTTP cookie that stores the authentication token.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.http.authentication.simple.anonymous.allowed</name>  
+      <defaultValue>true</defaultValue>  
+      <description>Indicates if anonymous requests are allowed when using 'simple' authentication.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.http.authentication.kerberos.principal</name>  
+      <defaultValue>HTTP/_HOST@LOCALHOST</defaultValue>  
+      <description>Indicates the Kerberos principal to be used for HTTP endpoint.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.http.authentication.kerberos.keytab</name>  
+      <defaultValue>${user.home}/hadoop.keytab</defaultValue>  
+      <description>Location of the keytab file with the credentials for the principal.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>dfs.ha.fencing.methods</name>  
+      <defaultValue/>  
+      <description>List of fencing methods to use for service fencing.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>dfs.ha.fencing.ssh.connect-timeout</name>  
+      <defaultValue>30000</defaultValue>  
+      <description>SSH connection timeout, in milliseconds, to use with the builtin sshfence fencer.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>dfs.ha.fencing.ssh.private-key-files</name>  
+      <defaultValue/>  
+      <description>The SSH private key files to use with the builtin sshfence fencer.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ha.zookeeper.quorum</name>  
+      <defaultValue/>  
+      <description>A list of ZooKeeper server addresses.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ha.zookeeper.session-timeout.ms</name>  
+      <defaultValue>5000</defaultValue>  
+      <description>The session timeout to use when the ZKFC connects to ZooKeeper.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ha.zookeeper.parent-znode</name>  
+      <defaultValue>/hadoop-ha</defaultValue>  
+      <description>The ZooKeeper znode under which the ZK failover controller stores its information.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ha.zookeeper.acl</name>  
+      <defaultValue>world:anyone:rwcda</defaultValue>  
+      <description>A comma-separated list of ZooKeeper ACLs to apply to the znodes used by automatic failover.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ha.zookeeper.auth</name>  
+      <defaultValue/>  
+      <description>A comma-separated list of ZooKeeper authentications to add when connecting to ZooKeeper.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!-- Static Web User Filter properties. -->  
+   <property> 
+      <description>The user name to filter as, on static web filters while rendering content.</description>  
+      <name>hadoop.http.staticuser.user</name>  
+      <defaultValue>dr.who</defaultValue>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!-- SSLFactory configuration -->  
+   <property> 
+      <name>hadoop.ssl.keystores.factory.class</name>  
+      <defaultValue>org.apache.hadoop.security.ssl.FileBasedKeyStoresFactory</defaultValue>  
+      <description>The keystores factory to use for retrieving certificates.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.ssl.require.client.cert</name>  
+      <defaultValue>false</defaultValue>  
+      <description>Whether client certificates are required</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.ssl.hostname.verifier</name>  
+      <defaultValue>DEFAULT</defaultValue>  
+      <description>The hostname verifier to provide for HttpsURLConnections.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.ssl.server.conf</name>  
+      <defaultValue>ssl-server.xml</defaultValue>  
+      <description>Resource file from which ssl server keystore information will be extracted.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.ssl.client.conf</name>  
+      <defaultValue>ssl-client.xml</defaultValue>  
+      <description>Resource file from which ssl client keystore information will be extracted</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.ssl.enabled</name>  
+      <defaultValue>false</defaultValue>  
+      <description>Whether to use SSL for the HTTP endpoints.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>hadoop.jetty.logs.serve.aliases</name>  
+      <defaultValue>true</defaultValue>  
+      <description>Enable/Disable aliases serving from jetty</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>fs.permissions.umask-mode</name>  
+      <defaultValue>022</defaultValue>  
+      <description>The umask used when creating files and directories.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <!-- ha properties -->  
+   <property> 
+      <name>ha.health-monitor.connect-retry-interval.ms</name>  
+      <defaultValue>1000</defaultValue>  
+      <description>How often to retry connecting to the service.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ha.health-monitor.check-interval.ms</name>  
+      <defaultValue>1000</defaultValue>  
+      <description>How often to check the service.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ha.health-monitor.sleep-after-disconnect.ms</name>  
+      <defaultValue>1000</defaultValue>  
+      <description>How long to sleep after an unexpected RPC error.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ha.health-monitor.rpc-timeout.ms</name>  
+      <defaultValue>45000</defaultValue>  
+      <description>Timeout for the actual monitorHealth() calls.</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ha.failover-controller.new-active.rpc-timeout.ms</name>  
+      <defaultValue>60000</defaultValue>  
+      <description>Timeout that the FC waits for the new active to become active</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ha.failover-controller.graceful-fence.rpc-timeout.ms</name>  
+      <defaultValue>5000</defaultValue>  
+      <description>Timeout that the FC waits for the old active to go to standby</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ha.failover-controller.graceful-fence.connection.retries</name>  
+      <defaultValue>1</defaultValue>  
+      <description>FC connection retries for graceful fencing</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property>  
+   <property> 
+      <name>ha.failover-controller.cli-check.rpc-timeout.ms</name>  
+      <defaultValue>20000</defaultValue>  
+      <description>Timeout that the CLI (manual) FC waits for monitorHealth, getServiceState</description>  
+      <source>core-site.xml</source>  
+      <type>高级</type> 
+   </property> 
+</configuration>
