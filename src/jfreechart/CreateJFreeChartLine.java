@@ -1,26 +1,23 @@
-package test;
+package jfreechart;
 
-import java.awt.Color;
-import java.awt.Font;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.DateAxis;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.time.Month;
+import org.jfree.data.time.TimeSeries;
+import org.jfree.data.time.TimeSeriesCollection;
+import org.jfree.ui.RectangleInsets;
+
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartUtilities;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.XYPlot;
-import org.jfree.data.time.Month;
-import org.jfree.data.time.TimeSeries;
-import org.jfree.data.time.TimeSeriesCollection;
-import org.jfree.ui.RectangleInsets;
-import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
-import org.jfree.chart.renderer.xy.XYItemRenderer;
-import org.jfree.chart.axis.DateAxis;
-import org.jfree.chart.labels.*;
-import org.jfree.ui.*;
 
 /**
  * 创建JFreeChart Line Chart（折线图）
@@ -32,7 +29,7 @@ public class CreateJFreeChartLine {
         // 步骤2：根据Dataset 生成JFreeChart对象，以及做相应的设置
         JFreeChart freeChart = createChart(dataset);
         // 步骤3：将JFreeChart对象输出到文件，Servlet输出流等
-        saveAsFile(freeChart, "c://jfreechart//testline.png", 500, 300);
+        saveAsFile(freeChart, "e://testline.png", 500, 300);
     }
 
     // 创建TimeSeriesCollection对象
@@ -98,7 +95,7 @@ public class CreateJFreeChartLine {
         jfreechart.getTitle().setFont(titleFont);
 
         //设置时间格式，同时也解决了乱码问题
-        DateAxis dateaxis = (DateAxis)xyplot.getDomainAxis();
+        DateAxis dateaxis = (DateAxis) xyplot.getDomainAxis();
         SimpleDateFormat sfd = new SimpleDateFormat("yy-MM");
         dateaxis.setDateFormatOverride(sfd);
         xyplot.setDomainAxis(dateaxis);
