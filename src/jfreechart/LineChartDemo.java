@@ -43,7 +43,7 @@ public class LineChartDemo {
             System.out.println(df.format(date));
 
         } catch (ParseException e) {
-            e.printStackTrace();
+            //branchLog
         }
         System.out.println("testbranch");
 
