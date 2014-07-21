@@ -46,6 +46,7 @@ public class LineChartDemo {
             e.printStackTrace();
         }
 
+        System.out.println("testMaster");
     }
 
     // 创建TimeSeriesCollection对象
