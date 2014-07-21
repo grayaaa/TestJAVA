@@ -46,6 +46,8 @@ public class LineChartDemo {
             e.printStackTrace();
         }
 
+
+
     }
 
     // 创建TimeSeriesCollection对象
