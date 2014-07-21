@@ -47,6 +47,7 @@ public class LineChartDemo {
         }
         System.out.println("testbranch");
 
+        System.out.println("testMaster");
     }
 
     // 创建TimeSeriesCollection对象
