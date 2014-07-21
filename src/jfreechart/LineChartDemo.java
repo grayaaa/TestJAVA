@@ -20,33 +20,61 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 创建JFreeChart Line Chart（折线图）
  */
 public class LineChartDemo {
     public static void main(String[] args) {
-        // 步骤1：创建CategoryDataset对象（准备数据）
-        CategoryDataset dataset = createDataset();
-        // 步骤2：根据Dataset 生成JFreeChart对象，以及做相应的设置
-        JFreeChart freeChart = createChart(dataset);
-        // 步骤3：将JFreeChart对象输出到文件，Servlet输出流等
-        saveAsFile(freeChart, "e://testline2.png", 600, 350);
+//        // 步骤1：创建CategoryDataset对象（准备数据）
+//        CategoryDataset dataset = createDataset();
+//        // 步骤2：根据Dataset 生成JFreeChart对象，以及做相应的设置
+//        JFreeChart freeChart = createChart(dataset);
+//        // 步骤3：将JFreeChart对象输出到文件，Servlet输出流等
+//        saveAsFile(freeChart, "e://testline2.png", 600, 350);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date date = sdf.parse("2014-07-16");
+            SimpleDateFormat df = new SimpleDateFormat("MMdd");
+            System.out.println(df.format(date));
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
     }
 
     // 创建TimeSeriesCollection对象
     private static CategoryDataset createDataset() {
 
-        double[][] data = new double[][]{{1310, 500, 1110, 1000},
-                {720, 700, 680, 640},
-                {1130, 1020, 980, 800},
-                {440, 400, 360, 300},
-                {1440, 400, 1360, 300}};
-        String[] rowKeys = {"pig", "beef", "chicken", "fish", "dog"};
-        String[] columnKeys = {"Guangzhou", "Shenzhen", "Dongguan", "Foshan"};
-        CategoryDataset dataset2 = DatasetUtilities.createCategoryDataset(rowKeys, columnKeys, data);
+//        double[][] data = new double[][]{{1310.0, 500, 1110, 1000},
+//                {720, 700, 680, 640},
+//                {1130, 1020, 980, 800},
+//                {440, 400, 360, 300},
+//                {1440, 400, 1360, 300}};
+//
+//        String[] rowKeys = {"pig", "beef", "chicken", "fish", "dog"};
+//        String[] columnKeys = {"Guangzhou", "Shenzhen", "Dongguan", "Foshan"};
 
+        double[][] data = new double[][]{{23285, 0, 22831, 0, 0, 0, 0},
+                {10698, 0, 12102, 0, 0, 0, 0}};
+
+        String[] rowKeys = {"ipadpv", "ipaduv"};
+        String[] columnKeys = {"2014-07-15", "2014-07-14", "2014-07-13", "2014-07-12", "2014-07-11", "2014-07-10", "2014-07-09"};
+        CategoryDataset dataset2 = DatasetUtilities.createCategoryDataset(rowKeys, columnKeys, data);
         return dataset2;
+
+    }
+
+    private static void createChartPng(String[] rowKeys, String[] columnKeys,double[][] data) {
+
+        CategoryDataset dataset = DatasetUtilities.createCategoryDataset(rowKeys, columnKeys, data);
+        JFreeChart freeChart = createChart(dataset);
+        saveAsFile(freeChart, "/tmp/testline2.png", 600, 350);
 
     }
 
