@@ -43,8 +43,9 @@ public class LineChartDemo {
             System.out.println(df.format(date));
 
         } catch (ParseException e) {
-            //log
+            e.printStackTrace();
         }
+        System.out.println("testbranch");
 
         System.out.println("testMaster");
     }
