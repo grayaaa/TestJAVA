@@ -102,5 +102,6 @@ public class IpProvinceSearchEngine extends RangeSearchEngine<Long, String> {
         System.out.println(engine.getProvince("202.101.15.61"));
         long endTime2 = System.currentTimeMillis();
         System.out.println("get cost " + (endTime2 - beginTime2));
+
     }
 }
