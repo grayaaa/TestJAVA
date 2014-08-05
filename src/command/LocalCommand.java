@@ -180,10 +180,6 @@ public class LocalCommand {
             buffer.append(res + "\n");
         }
 
-//		while ((ptr = in.read()) != -1) {
-//			buffer.append((char) ptr);
-//
-//		}
         return buffer.toString();
     }
 
@@ -237,7 +233,7 @@ public class LocalCommand {
     static public void main(String[] args) {
 
         // 拼凑命令字符串
-        String cmd = "whoami";
+        String cmd = "119.137.140";
 
         // 打印命令串
         if (args != null && args.length > 0) {
@@ -249,7 +245,7 @@ public class LocalCommand {
         CommandResult cr = LocalCommand.suRun("root", cmd);
 
         // 打印命令执行结果
-        System.out.println("exitvalue:" + cr.getStdErr());
+        System.out.println("exitvalue:" + cr.getExitVal());
         System.out.println("stdOut:" + cr.getStdOut());
         System.out.println("stdErr:" + cr.getStdErr());
 
