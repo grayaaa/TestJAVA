@@ -27,6 +27,12 @@ public class TestDate {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		Calendar Cal = Calendar.getInstance();
 		Cal.setTime(nowT);
+
+        System.out.println("@@"+Cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+        System.out.println("@@"+Cal.get(Calendar.DAY_OF_MONTH));
+        System.out.println("@@"+Cal.get(Calendar.MONTH));
+
+
 		Cal.add(Calendar.MINUTE, -5);
 		System.out.println("当前时间减5分钟:" + format.format(Cal.getTime()));
 

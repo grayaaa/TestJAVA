@@ -4,8 +4,8 @@ import java.util.regex.Pattern;
 public class TestReg {
 
     public static void main(String[] args) {
-        String regFilter = ".*qqzone((\\d{2})|100)?.*";
-        String regValue = "qqzone100";
+        String regFilter = "yanyiuser(((?!0{4})\\d{4})|([1-4]\\d{4})|(50000))@163.com";
+        String regValue = "yanyiuser0000@163.com";
         Boolean flagFilter = true;
         try {
             flagFilter = Pattern.matches(regFilter, regValue);

@@ -81,6 +81,19 @@ public class Test {
         Collections.sort(tmp, new MyListComparator(2));
 
         System.out.println(tmp.toString());
+
+
+
+        String z= "ipaD";
+        System.out.println(z.toUpperCase().charAt(0)+z.substring(1, z.length()));
+
+
+
+        if(1==1){
+            System.out.println("11111111111111111");
+        }else if(2==2){
+            System.out.println("22222222222222222");
+        }
     }
 }
 
