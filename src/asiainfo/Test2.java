@@ -58,7 +58,7 @@ public class Test2 {
         StringBuffer abcSB = new StringBuffer();
 
         try {
-            File input = new File("E:\\index.html");
+            File input = new File("src\\asiainfo\\index.html");
             Document doc = Jsoup.parse(input, "UTF-8", "http://163.com/");
             Element div = doc.select("div").first();
 
