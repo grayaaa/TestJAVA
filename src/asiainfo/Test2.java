@@ -2,9 +2,13 @@ package asiainfo;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
 import javax.swing.*;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -50,7 +54,14 @@ public class Test2 {
         File abc = new File(sourcePath, "abc");
         File chars = new File(sourcePath, "char");
 
+        StringBuffer numSB = new StringBuffer();
+        StringBuffer abcSB = new StringBuffer();
+
         try {
+            File input = new File("E:\\index.html");
+            Document doc = Jsoup.parse(input, "UTF-8", "http://163.com/");
+            Element div = doc.select("div").first();
+
             for (File file : new File(sourcePath, suffix).listFiles()) {
                 List<String> readLines = Files.readLines(file, Charsets.UTF_8);
                 for (String str : readLines) {
@@ -58,8 +69,19 @@ public class Test2 {
                         char c = str.charAt(i);
                         if (c >= '0' && c <= '9') {
                             Files.append(String.valueOf(c), num, Charsets.UTF_8);
+                            abcSB.append(String.valueOf(c));
+                            if (abcSB.length() > 9) {
+                                div.append("<font size=\"3\" color=\"red\">" + abcSB + "</font></br>");//在div之后添加html内容
+                                abcSB.setLength(0);
+                            }
+
                         } else if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
                             Files.append(String.valueOf(c), abc, Charsets.UTF_8);
+                            numSB.append(String.valueOf(c));
+                            if (numSB.length() > 9) {
+                                div.append("<font size=\"3\" color=\"red\">" + numSB + "</font></br>");//在div之后添加html内容
+                                numSB.setLength(0);
+                            }
                         } else {
                             Files.append(String.valueOf(c), chars, Charsets.UTF_8);
                         }
@@ -67,6 +89,9 @@ public class Test2 {
                 }
             }
 
+            FileOutputStream fos = new FileOutputStream(new File(sourcePath, "index.html"), true);
+            fos.write(doc.html().getBytes());
+            fos.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
