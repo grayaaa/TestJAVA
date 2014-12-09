@@ -79,7 +79,7 @@ public class Test2 {
                             Files.append(String.valueOf(c), abc, Charsets.UTF_8);
                             numSB.append(String.valueOf(c));
                             if (numSB.length() > 9) {
-                                div.append("<font size=\"3\" color=\"red\">" + numSB + "</font></br>");//在div之后添加html内容
+                                div.append("<font size=\"3\" color=\"blue\">" + numSB + "</font></br>");//在div之后添加html内容
                                 numSB.setLength(0);
                             }
                         } else {
