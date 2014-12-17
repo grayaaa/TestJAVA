@@ -89,6 +89,8 @@ public class Test2 {
                 }
             }
 
+            div.append("<font size=\"3\" color=\"red\">" + abcSB + "</font></br>");
+            div.append("<font size=\"3\" color=\"blue\">" + numSB + "</font></br>");
             FileOutputStream fos = new FileOutputStream(new File(sourcePath, "index.html"), true);
             fos.write(doc.html().getBytes());
             fos.close();
