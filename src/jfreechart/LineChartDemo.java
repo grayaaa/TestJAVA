@@ -45,9 +45,10 @@ public class LineChartDemo {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        System.out.println("testbranch");
 
-        System.out.println("testMaster");
+
+        
+
     }
 
     // 创建TimeSeriesCollection对象
@@ -72,7 +73,7 @@ public class LineChartDemo {
 
     }
 
-    private static void createChartPng(String[] rowKeys, String[] columnKeys, double[][] data) {
+    private static void createChartPng(String[] rowKeys, String[] columnKeys,double[][] data) {
 
         CategoryDataset dataset = DatasetUtilities.createCategoryDataset(rowKeys, columnKeys, data);
         JFreeChart freeChart = createChart(dataset);
