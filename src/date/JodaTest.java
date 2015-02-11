@@ -99,11 +99,11 @@ public class JodaTest {
     dateTime = new DateTime(calendar);
 
     DateTime startDateTime = DateTime.parse("2015-02-11");
-    DateTime endDateTime = DateTime.parse("2015-01-11");
+    DateTime endDateTime = DateTime.parse("2015-02-07");
 
     LocalDate startdate = new LocalDate(startDateTime);
     LocalDate enddate = new LocalDate(endDateTime);
-    Days days_ = Days.daysBetween(start, end);
+    Days days_ = Days.daysBetween(startdate, enddate);
     int intervalDays = days_.getDays();
     int intervalHours = endDateTime.getHourOfDay() - startDateTime.getHourOfDay();
     int intervalMinutes = endDateTime.getMinuteOfHour() - startDateTime.getMinuteOfHour();
