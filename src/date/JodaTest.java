@@ -109,5 +109,9 @@ public class JodaTest {
     int intervalMinutes = endDateTime.getMinuteOfHour() - startDateTime.getMinuteOfHour();
     int intervalSeconds = endDateTime.getSecondOfMinute() - startDateTime.getSecondOfMinute();
     System.out.println("相隔：" + intervalDays);
+
+
+
+    System.out.println(DateTime.now().toString("yyyy/MM/dd HH:mm:ss EE"));
   }
 }
