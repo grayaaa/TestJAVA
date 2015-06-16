@@ -27,6 +27,7 @@ public class JodaTest {
 
     System.out.println("**************************************************************************");
 
+    System.out.println(DateTime.parse("2015-02-26").toString("dd/MM/yyyy HH:mm:ss"));
 
     // 下面就是按照一点的格式输出时间
     String str2 = dateTime.toString("MM/dd/yyyy hh:mm:ss.SSSa");
